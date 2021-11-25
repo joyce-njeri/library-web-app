@@ -1,0 +1,475 @@
+/* Top Header and Menu */
+.header-h {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background: white;
+    z-index: 1020;
+    padding: 0px 40px;
+    /* padding-bottom: 0px; */
+}
+
+.header-h-scrolled {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.header-h-unscrolled .nav--links li a {
+    padding: 30px 25px;
+    /* height: 70px; */
+}
+
+.header-h-scrolled .nav--links li a {
+    padding: 20px 25px;
+    /* height: 50px; */
+}
+
+/* logo */
+
+.header-h .nav-logo img {
+    height: 80px;
+  float:left;
+  margin-left: 5%;
+  width:100px;
+  height:70px;
+  
+
+}
+
+
+
+.nav-logo img {
+    border-radius: 100px;
+}
+
+/* nav-h */
+
+.nav-h {
+    display: table;
+    width: 100%;
+}
+
+.nav-h>* {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.nav-h .nav-nav {
+    text-align: right;
+}
+
+.nav-h .nav-nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-h .nav-nav ul>* {
+    flex-grow: 1;
+}
+
+/* links */
+.nav-nav ul {
+    margin: 0px;
+}
+
+.nav-nav ul * {
+    text-transform: uppercase;
+}
+
+.nav--links li {
+    position: relative;
+}
+
+.nav--links li a {
+    text-decoration: none;
+    color: black;
+    position: relative;
+    display: block;
+    text-align: center;
+    transition: 300ms ease;
+}
+
+.nav--links li a.active {
+    font-weight: bold;
+}
+
+.nav--links li a:hover {
+    background: whitesmoke;
+}
+
+.nav--links li.active::after {
+    position: absolute;
+    content: "";
+    bottom: 0px;
+    height: 4px;
+    background: #b30000;
+    width: 100%;
+    left: 0px;
+}
+
+/* main section */
+section.back-image {
+    background: url('./../images/library.PNG');
+    background-size: cover;
+    height: calc(100vh);
+    position: relative;
+    width: 100%;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.651);
+    /* opacity: 1; */
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: initial;
+    padding-left: 10rem
+}
+
+.cont-h {
+    color: white;
+    max-width: 450px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cont-h h1 {
+    margin: 0rem;
+}
+
+.cont-h .btn {
+    margin-top: 1rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+/* 
+  quiz related css
+ */
+
+.quiz-title {
+    background: #F7F7F7;
+    padding: 20px 10px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.question-text {
+    display: block;
+    font-weight: 600;
+    padding: 10px;
+    padding-top: 45px;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+.question-answers {
+    padding: 1px 1px 1px 10px;
+}
+
+/* for regular input box */
+.question-answers input[type="text"] {
+    padding: 10px 20px;
+    border: 1px solid black;
+}
+
+.question-answers input[type="text"].danger {
+    border-color: red;
+}
+
+.question-answers input[type="text"].success {
+    border-color: green;
+}
+
+.value-l {
+    display: block;
+    padding: 3px;
+}
+
+/* form feedback holders colors */
+.danger {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+.form-check {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.form-check button {
+    border: 0px;
+}
+
+#results {
+    padding: 10px 20px;
+    text-align: center;
+    display: block;
+    font-weight: bold;
+}
+
+body {
+    background: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    color: rgb(56, 56, 56);
+    margin: 0px;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 0.8rem 2.5rem;
+    border-radius: 100rem;
+    transition: 300ms ease;
+    border: 2px;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn-uppercase {
+    text-transform: uppercase;
+}
+
+.btn-black {
+    background: #b30000;
+    color: whitesmoke;
+}
+
+.btn-black:hover {
+    background: #b30000;
+}
+
+/*
+ * 
+ * for side nav elements 
+ */
+.side--nav-h {
+    background: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.03);
+    min-height: 70vh;
+    position: fixed;
+    width: 25vw;
+    margin: 10px;
+    top: 80px;
+}
+
+.side--nav-h .content-title {
+    background: #F7F7F7;
+    padding: 20px 10px;
+    padding-left: 20px;
+    font-weight: bold;
+    color: #b30000;
+}
+
+.side--nav-h .content-h {
+    padding: 10px 10px;
+    padding-left: 20px;
+    padding-top: 0px;
+    color: #b30000;
+}
+
+.side--nav-h ul {
+    list-style-type: none;
+    padding: 0px;
+
+}
+
+.side--nav-h ul li {
+    padding: 20px 0px;
+}
+
+.side--nav-h ul li:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.side--nav-h li a {
+    display: block;
+    color:  #cc0000;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.side--nav-h li .info {
+    display: block;
+    color: #3d3d3d;
+    font-size: 12px;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+.big{
+    font-size:50px;
+}
+
+.user-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  padding: 50px;
+}
+.side--nav-h li .info span {
+    display: block;
+}
+
+/*
+ * 
+ * main element besides the sidenav */
+.toside--h {
+    position: relative;
+    width: calc((100vw - 25vw) - (15px * 2));
+    margin-left: calc(25vw + 20px);
+    margin-top: 80px;
+    padding-left: 3rem;
+}
+
+/*
+ * Course highlight*/
+
+.subj-h {
+    max-width: 50vw;
+    background: white;
+    box-shadow: 3px 3px 10px 0px #b30000;
+    margin-bottom: 20px;
+}
+
+.subj-h-t {
+    height: 40vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.subj-h-t .overlay {
+    position: absolute;
+    /*background: linear-gradient(transparent, black);*/
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.subj-h-t .overlay * {
+    color: #e0e0e0;
+    text-decoration: none
+}
+
+.subj-h-t .overlay .info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.subj-h-b {
+    padding: 20px 20px;
+    display: block;
+}
+
+.subj-h-b p {
+    margin: 0px;
+}
+
+.subj-h .students-info {
+    padding-top: 10px;
+    display: block;
+    color: #aeaeae;
+}
+
+/* single subject view */
+.subj-view .subj-h-b {}
+
+.subj-view .subj-h-b p {
+    line-break: normal;
+    white-space: normal;
+    padding: 10px 0px;
+    font-size: 1rem;
+}
+
+/* buttons to quiz */
+.subj-quiz-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.subj-quiz-btns a {
+    flex-grow: 1;
+    padding: 10px;
+    color: #b30000;
+    background: ##b30000;
+    border: 1px solid rgba(0, 0, 0, 0.548);
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: 300ms ease;
+}
+
+.subj-quiz-btns a:hover {
+    color: #b30000;
+    background:#b30000;
+}
+
+/* contact form */
+form.contact {
+    margin: 50px auto;
+    padding: 20px 20px;
+    margin-top: 90px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.03);
+
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+}
+
+.input-wrapper input,
+.input-wrapper select,
+.input-wrapper textarea {
+    padding: 10px;
+    width: 100%
+}
+
+.input-wrapper label {
+    width: 20%;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.contact {
+    max-width: 600px;
+    background: white;
+}
+
+.submit-btn-h {
+    text-align: center;
+    padding: 20px;
+}
+#contact-message{
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
