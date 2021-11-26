@@ -11,7 +11,6 @@
 
 <body>
 
-   <!-- the header of the website/ the navigation bar -->
     <header class="header-h header-h-unscrolled">
 
         <div class="nav-h">
@@ -23,7 +22,7 @@
                     <div class="nav--links">
                         <ul>
                             <li>
-                                <a href="./index.php">Home</a>
+                                <a href="./index.html">Home</a>
                             </li>
                             
                             <li class="">
@@ -42,50 +41,44 @@
             </div>
         </div>
     </header>
-    <!--  -->
-    <!--  -->
-    <main>
-        <?php
-            if(isset($_REQUEST['msg'])){
-            $message=$_REQUEST['msg'];
-            $visibility='';
-          }
-          else{
-            $message='';
-            $visibility='hidden';
-          }
-          
-          ?>
-          <p id="message" class=" <?php echo $visibility;?>" style="color: red;cursor: not-allowed;"><?php echo $message; ?></p>
-            <script>
-              
-                $("#message").click(function(){
-                  $("#message").hide();
-                });
- 
-          
-            </script>
-        <!-- top -->
-        <form name="login" class="contact" method="POST" action="./php-script/login.php">
-            <!--  -->
-            <div class="input-wrapper">
-                <label for="">User Name</label>
-                <input name="username" type="text" placeholder="holder">
-            </div>
-            <div class="input-wrapper">
-                <label for="">Password</label>
-                <input name="password" type="password" placeholder="holder">
-            </div>
-            
-            <!--  -->
-            <!--  -->
-            <div class="submit-btn-h">
-                <button type="Submit" class="btn btn-black" name="login">Submit</button>
-            </div>
-            <!--  -->
-        </form>
+
+   
+
+
+    <div >
+
         <!--  -->
-    </main>
+        <!-- subject highlight computer-->
+        <div >
+            <form name="signup" class="contact" method="POST" action="./php-script/signup.php">
+            <!--  -->
+                <p1 class="title"> Sign up  </p1>
+                <div class="input-wrapper">
+                    <label for="">Email</label>
+                    <input name="email" class="no-outline" type="Email" placeholder="enter your school email" required autocomplete="off">
+                </div>
+                <div class="input-wrapper">
+                    <label for="">Password</label>
+                    <input name="password" class="no-outline" type="password" placeholder="enter your password" minlength="8" maxlength="12">
+                </div>
+                <div class="input-wrapper">
+                    <label for="">Confirm Password</label>
+                    <input name="confirm_password" class="no-outline" type="password" placeholder="Confirm your password">
+                </div>
+            
+                <!--  -->
+                <!--  -->
+                <div class="submit-btn-h">
+                    <button type="Submit" class="btn btn-black">Submit</button>
+                </div>
+                <!--  -->
+            </form>
+        </div>
+        <!--  -->
+        <!--  -->
+    </div>
+
+
     <!--  -->
     <!--  -->
     <!--  -->

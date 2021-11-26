@@ -1,0 +1,131 @@
+<?php
+session_start(); 
+include 'connect.php';
+if (!isset($_SESSION['username'])) {
+    # code...
+    header("location:Login.php");
+}?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ALU Library</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+
+    <!-- main nav header -->
+    <header class="header-h header-h-scrolled">
+        
+        <div class="nav-h">
+            <div class="nav-logo">
+                <img src="../images/ALU_logo.png" alt="logo">
+            </div>
+            <div class="nav-nav">
+                <div>
+                    <div class="nav--links">
+                        <ul>
+                            <li >
+                                <button class="btn btn-brown btn-uppercase" onclick="window.location.href = '../contact.html';">Contact </button>  
+                            </li>
+
+                            <li>
+                                <button class="btn btn-black btn-uppercase" onclick="window.location.href = '../php-script/logout.php';">logout</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <div class="nav--profile">
+                        <img src="" alt="">
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--  -->
+    <!--  -->
+    <main>
+        <!-- -->
+        <!-- Left menu preview-->
+        <aside class="side--nav-h">
+            <div class="content-title">
+                School Library 
+            </div>
+            <div class="content-h">
+                <nav>
+                    <ul>
+                        <!--  -->
+                        <li>
+                            <a href="general-home-view.html?pg=catalogue">Book catalogue</a>
+                            <div class="info">
+                                <span>12000 Books</span>
+                            </div>
+                        </li>
+                        <!--  -->
+                        <!--  -->
+                        <li>
+                            <a href="general-home-view.html?pg=borrow">Borrow Book</a>
+                            <div class="info">
+                                <span>no borrowed books</span>
+                            </div>
+                        </li>
+                        <!--  -->
+                        <li>
+                            <a href="general-home-view.html?pg=borrowed">View borrowed books</a>
+                            <div class="info">
+                                <span>4 borrowed books</span>
+                            </div>
+                        </li>
+                        <!--  -->
+                        
+                        <li>
+                            <a href="general-home-view?pg=suggestions">Suggestions</a>
+                            <div class="info">
+                                <span> any Suggestions</span>
+                            </div>
+                        </li>
+                        <!--  -->
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- -->
+        <!-- Main content preview -->
+        <?php 
+
+            $page=$_REQUEST['pg'];
+            switch ($page) {
+                case 'catalogue':
+                    include './page/catalogue.html';
+                    break;
+                case 'borrow':
+                    include './page/borrow-book.html';
+                    break;
+                case 'borrowed':
+                    include './page/borrowed.html';
+                    break;
+                case 'suggestions':
+                    include './page/suggestions.html';
+                    break;
+                default:
+                    include 'student-home.html';
+                    break;
+            }
+        ?>
+        <!--  -->
+    </main>
+    <!--  -->
+    <!--  -->
+    <footer>
+
+    </footer>
+    <!--  -->
+</body>
+
+</html>

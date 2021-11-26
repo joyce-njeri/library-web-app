@@ -110,12 +110,16 @@
 }
 
 /* main section */
-section.back-image {
+.back-image {
     background: url('./../images/library.PNG');
+
     background-size: cover;
     height: calc(100vh);
-    position: relative;
-    width: 100%;
+    width: 50%;
+    position: absolute;
+    left: 0px;
+    height: 100%;
+
 }
 
 .overlay {
@@ -127,26 +131,41 @@ section.back-image {
     width: 100%;
     height: 100%;
     z-index: initial;
-    padding-left: 10rem
+    padding-left: 10rem;
 }
 
 .cont-h {
-    color: white;
-    max-width: 450px;
+    color: black;
     height: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 50%;
+    position: absolute;
+    right: 0px;
+    float: right;
 }
+
+
 
 .cont-h h1 {
-    margin: 0rem;
+    margin: 20px;
+    font-size: 40px;
+    color: #36454F;
+
+}
+.cont-h p{
+    margin: 20px;
+    font-size: 20px;
+    color: #808080;
+
 }
 
+
 .cont-h .btn {
-    margin-top: 1rem;
+    margin-top: 5rem;
     padding-left: 4rem;
-    padding-right: 4rem;
+    padding-right: 3rem;
 }
 
 /* 
@@ -348,7 +367,7 @@ body {
 .subj-h {
     max-width: 50vw;
     background: white;
-    box-shadow: 3px 3px 10px 0px #b30000;
+    box-shadow: 3px 3px 10px 0px ;
     margin-bottom: 20px;
 }
 
@@ -432,13 +451,19 @@ body {
 }
 
 /* contact form */
+.contact{
+    margin: 50px 50 px;
+}
+
 form.contact {
     margin: 50px auto;
     padding: 20px 20px;
-    margin-top: 90px;
+    margin-top: 90x;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.03);
+    padding-top: 0px;
 
 }
+
 
 .input-wrapper {
     display: flex;
@@ -450,8 +475,21 @@ form.contact {
 .input-wrapper select,
 .input-wrapper textarea {
     padding: 10px;
-    width: 100%
+    width: 100%;
 }
+.input-wrapper input{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    border-bottom: 1px solid ;
+
+}
+
+.no-outline:focus {
+  outline: none;
+}
+
 
 .input-wrapper label {
     width: 20%;
@@ -462,6 +500,7 @@ form.contact {
 .contact {
     max-width: 600px;
     background: white;
+    margin-top: 50px;
 }
 
 .submit-btn-h {
@@ -472,4 +511,24 @@ form.contact {
     padding: 10px;
     font-weight: bold;
     text-align: center;
+}
+
+.title{
+
+   
+    margin-bottom: 10px ;
+      text-align: center;
+      color: #b30000;
+      font-size: 30px;
+      font-weight: bold;
+      line-height: 3 ;
+
+}
+/*search results*/
+#searchResult {
+    display: none;
+    width: ; /* I'd make this the same width as your search input */
+    position: absolute; /* You can use position: fixed as well*/
+    top: ; /* Position this underneath your search input */
+    left: ; /* Position this underneath your search input */
 }
