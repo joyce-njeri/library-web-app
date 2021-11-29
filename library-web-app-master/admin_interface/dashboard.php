@@ -410,11 +410,14 @@
                                     <label>Email:</label><input type="email" name="addemail" style="width: 250px;" />
                                 </div>
                                 <div class="addbook-input">
-                                    <label>Password:</label><input type="password" name="addpass" style="width: 250px;" />
+                                    <label>Password:</label><input type="password" name="addpassword" style="width: 250px;" />
+                                </div>
+                                <div class="addbook-input">
+                                    <label>Confirm Password:</label><input type="password" name="addcpassword" style="width: 250px;" />
                                 </div>
                                 <!-- </br> -->
 
-                                <input class="submit-btn" type="submit-btn" value="SUBMIT"/>
+                                <input class="submit-btn" type="submit" value="SUBMIT"/>
                             </form>
                         </div>
                     </div>

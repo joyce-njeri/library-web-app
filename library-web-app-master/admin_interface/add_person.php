@@ -6,9 +6,9 @@ $addfirstname=$_POST['addfirstname'];
 $addlastname=$_POST['addlastname'];
 $addrole= $_POST['addrole'];
 $addemail= $_POST['addemail'];
-$addpass= $_POST['addpass'];
+$addpassword= md5($_POST['addpassword']);
 
 
 $obj=new data();
 $obj->setconnection();
-$obj->addnewuser($addfirstname,$addlastname,$addrole,$addemail,$addpass);
+$obj->addnewuser($addfirstname,$addlastname,$addrole,$addemail,$addpassword);

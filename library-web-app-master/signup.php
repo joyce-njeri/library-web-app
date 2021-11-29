@@ -26,13 +26,8 @@ if (isset($_POST['submit'])) {
 					VALUES ('$firstname', '$lastname','$role','$email', '$password')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
-                echo "<script>alert('User Registration Completed.')</script>";
-                $firstname = "";
-                $lastname = "";
-                $role = "";
-                $email = "";
-                $_POST['password'] = "";
-                $_POST['cpassword'] = "";
+                // echo "<script>alert('User Registration Completed.')</script>";
+                header("Location: signin.php");
             } else {
                 echo "<script>alert('Woops! Something Went Wrong.')</script>";
             }
@@ -71,7 +66,7 @@ if (isset($_POST['submit'])) {
                 <input type="text" placeholder="Last Name" name="lastname" value="<?php echo $lastname; ?>" required>
             </div>
             <div class="input-group">
-                <input list="roles"  placeholder="Role" name="role" value="<?php echo $role; ?>" required/></label>
+                <input list="roles" placeholder="Role" name="role" value="<?php echo $role; ?>" required /></label>
                 <datalist id="roles">
                     <option value="Student">
                     <option value="Faculty">

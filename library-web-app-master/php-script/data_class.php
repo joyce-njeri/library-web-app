@@ -28,25 +28,22 @@ class data extends db {
     }
 
 
-    function addnewuser($firstname,$lastname,$userrole,$email,$password){
+    function addnewuser($firstname,$lastname,$userrole,$email,$pass){
         $this->firstname=$firstname;
         $this->lastname=$lastname;
         $this->userrole=$userrole;
         $this->email=$email;
-        $this->password=$password;
+        $this->pass=$pass;
 
 
-         $q="INSERT INTO users(id, firstname, lastname, userrole, email, password)VALUES('','$firstname','$lastname','$userrole','$email','$password')";
+        $q="INSERT INTO users(id, firstname, lastname, role, email, password)VALUES('','$firstname','$lastname','$userrole','$email','$pass')";
 
         if($this->connection->exec($q)) {
             header("Location:dashboard.php?msg=New Add done");
         }
-
         else {
             header("Location:dashboard.php?msg=Register Fail");
         }
-
-
 
     }
     function userLogin($t1, $t2) {
@@ -281,8 +278,6 @@ class data extends db {
     function delteuserdata($id){
         $q="DELETE from users where id='$id'";
         if($this->connection->exec($q)){
-    
-            
            header("Location:dashboard.php?msg=done");
         }
         else{
