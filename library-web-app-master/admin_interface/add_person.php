@@ -1,14 +1,14 @@
 <?php
 
-include("data_class.php");
+include("../php-script/data_class.php");
 
 $addfirstname=$_POST['addfirstname'];
 $addlastname=$_POST['addlastname'];
-$role= $_POST['role'];
+$addrole= $_POST['addrole'];
 $addemail= $_POST['addemail'];
 $addpass= $_POST['addpass'];
 
 
 $obj=new data();
 $obj->setconnection();
-$obj->addnewuser($addfirstname,$addlastname,$role,$addemail,$addpass);
+$obj->addnewuser($addfirstname,$addlastname,$addrole,$addemail,$addpass);

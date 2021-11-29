@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin Dashboard</title>
+    <title>Student and Faculty Dashboard</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -378,67 +378,127 @@
                     <div class="role"><Button class="top-btn"> ADMIN</Button></div>
 
                     <div class="leftinnerdiv">
-                        <Button class="btn" onclick="openpart('addperson')"> ADD USER</Button>
-                        <Button class="btn" onclick="openpart('studentrecord')"> STUDENT REPORT</Button>
+                        <Button class="btn" onclick="openpart('bookreport')"> CATALOGUE</Button>
+                        <Button class="btn" onclick="openpart('issuebook')"> BORROW BOOK</Button>
                         <a href="../logout.php"><Button class="btn"> LOGOUT</Button></a>
                     </div>
 
+                    <!-- issue book -->
                     <div class="rightinnerdiv">
-                        <div id="addperson" class="innerright portion"  style="<?php if (!empty($_REQUEST['viewid'])) {
-                                                                                echo "display:none";
-                                                                            } else {
-                                                                                echo "";
-                                                                            } ?>">
-                            <Button class="report-btn">ADD USER</Button>
-                            <form action="add_person.php" method="post" enctype="multipart/form-data">
-                                <div class="addbook-input">
-                                    <label>First Name:</label><input type="text" name="addfirstname" style="width: 250px;" />
-                                </div>
-                                <div class="addbook-input">
-                                    <label>Last Name:</label><input type="text" name="addlastname" style="width: 250px;" />
-                                </div>
-                                <div class="addbook-input">
-                                    <label for="addrole">Choose Role:</label>
-                                    <select name="addrole">
-                                        <option value="student">Student</option>
-                                        <option value="teacher">Teacher</option>
-                                        <option value="librarian">Librarian</option>
-                                        <option value="admin">Admin</option>
-                                    </select>
-                                </div>
-                                <div class="addbook-input">
-                                    <label>Email:</label><input type="email" name="addemail" style="width: 250px;" />
-                                </div>
-                                <div class="addbook-input">
-                                    <label>Password:</label><input type="password" name="addpass" style="width: 250px;" />
-                                </div>
-                                <!-- </br> -->
+                        <div id="issuebook" class="innerright portion" style="display:none">
+                            <Button class="report-btn">BORROW BOOK</Button>
+                            <form action="issuebook_server.php" method="post" enctype="multipart/form-data">
+                            <div class="addbook-input">    
+                            <label for="book">Choose Book:</label>
+                            
+                                <select name="book">
+                                    <?php
+                                    $u = new data;
+                                    $u->setconnection();
+                                    $u->getbookissue();
+                                    $recordset = $u->getbookissue();
+                                    foreach ($recordset as $row) {
 
-                                <input class="submit-btn" type="submit-btn" value="SUBMIT"/>
+                                        echo "<option value='" . $row[2] . "'>" . $row[2] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            
+
+                                <label for="Select Student">:</label>
+                                <select name="userselect">
+                                    <?php
+                                    $u = new data;
+                                    $u->setconnection();
+                                    $u->userdata();
+                                    $recordset = $u->userdata();
+                                    foreach ($recordset as $row) {
+                                        $id = $row[0];
+                                        echo "<option value='" . $row[1] . "'>" . $row[1] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                                </div>
+                                <br>
+                                Days<input type="number" name="days" />
+
+                                <input class="submit-btn" type="submit" value="SUBMIT" />
                             </form>
                         </div>
                     </div>
 
                     <div class="rightinnerdiv">
-                        <div id="studentrecord" class="innerright portion" style="display:none">
-                            <Button class="report-btn">VIEW STUDENTS</Button>
+                        <div id="bookdetail" class="innerright portion" style="<?php if (!empty($_REQUEST['viewid'])) {
+                                                                                    $viewid = $_REQUEST['viewid'];
+                                                                                } else {
+                                                                                    echo "display:none";
+                                                                                } ?>">
 
+                            <Button class="report-btn">BOOK DETAIL</Button>
+                            </br>
                             <?php
                             $u = new data;
                             $u->setconnection();
-                            $u->userdata();
-                            $recordset = $u->userdata();
+                            $u->getbookdetail($viewid);
+                            $recordset = $u->getbookdetail($viewid);
+                            foreach ($recordset as $row) {
 
-                            $table = "<table style='font-family: Arial, Helvetica, sans-serif;border-collapse: collapse;width: 100%;height: 100%;'><tr><th style='  border: 1px solid #ddd;
-            padding: 8px;'>First Name</th><th>Last Name</th><th>Email</th><th>Role</th></tr>";
+                                $bookid = $row[0];
+                                $bookimg = $row[1];
+                                $bookname = $row[2];
+                                $bookdetail = $row[3];
+                                $bookauthour = $row[4];
+                                $bookpub = $row[5];
+                                $branch = $row[6];
+                                $bookprice = $row[7];
+                                $bookquantity = $row[8];
+                                $bookava = $row[9];
+                                $bookrent = $row[10];
+                            }
+                            ?>
+
+                            <img width='150px' height='150px' style='border:1px solid #333333; float:left;margin-left:20px' src="uploads/<?php echo $bookimg ?> " />
+                            </br>
+                            <p style="color:black"><u>Book Name:</u> &nbsp&nbsp<?php echo $bookname ?></p>
+                            <p style="color:black"><u>Book Detail:</u> &nbsp&nbsp<?php echo $bookdetail ?></p>
+                            <p style="color:black"><u>Book Authour:</u> &nbsp&nbsp<?php echo $bookauthour ?></p>
+                            <p style="color:black"><u>Book Publisher:</u> &nbsp&nbsp<?php echo $bookpub ?></p>
+                            <p style="color:black"><u>Book Branch:</u> &nbsp&nbsp<?php echo $branch ?></p>
+                            <p style="color:black"><u>Book Price:</u> &nbsp&nbsp<?php echo $bookprice ?></p>
+                            <p style="color:black"><u>Book Available:</u> &nbsp&nbsp<?php echo $bookava ?></p>
+                            <p style="color:black"><u>Book Rent:</u> &nbsp&nbsp<?php echo $bookrent ?></p>
+
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="rightinnerdiv">
+                        <div id="bookreport" class="innerright portion" style="<?php if (!empty($_REQUEST['viewid'])) {
+                                                                                echo "display:none";
+                                                                            } else {
+                                                                                echo "";
+                                                                            } ?>">
+                            <Button class="report-btn">VIEW BOOKS</Button>
+                            <?php
+                            $u = new data;
+                            $u->setconnection();
+                            $u->getbook();
+                            $recordset = $u->getbook();
+
+                            $table = "<table style='font-family: Arial, Helvetica, sans-serif;width: 100%;'><tr><th style='  border: 1px solid #ddd;
+            padding: 8px;'>Book Name</th><th>Price</th><th>Qnt</th><th>Available</th><th>Borrow</th></th><th>View</th></tr>";
                             foreach ($recordset as $row) {
                                 $table .= "<tr>";
                                 "<td>$row[0]</td>";
-                                $table .= "<td>$row[1]</td>";
                                 $table .= "<td>$row[2]</td>";
-                                $table .= "<td>$row[4]</td>";
-                                $table .= "<td>$row[3]</td>";
-                                // $table.="<td><a href='deleteuser.php?useriddelete=$row[0]'>Delete</a></td>";
+                                $table .= "<td>$row[7]</td>";
+                                $table .= "<td>$row[8]</td>";
+                                $table .= "<td>$row[9]</td>";
+                                $table .= "<td>$row[10]</td>";
+                                $table .= "<td><a href='dashboard.php?viewid=$row[0]'><button type='button' class='btn btn-primary'>View Book</button></a></td>";
+                                // $table.="<td><a href='deletebook_dashboard.php?deletebookid=$row[0]'>Delete</a></td>";
                                 $table .= "</tr>";
                                 // $table.=$row[0];
                             }
@@ -449,6 +509,9 @@
 
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
         </div>
