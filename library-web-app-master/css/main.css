@@ -1,0 +1,652 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Top Header and Menu */
+.header-h {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background: white;
+    z-index: 1020;
+    padding: 0px 40px;
+    /* padding-bottom: 0px; */
+}
+
+.header-h-scrolled {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.header-h-unscrolled .nav--links li a {
+    padding: 30px 25px;
+    /* height: 70px; */
+}
+
+.header-h-scrolled .nav--links li a {
+    padding: 20px 25px;
+    /* height: 50px; */
+}
+
+/* logo */
+
+.header-h .nav-logo img {
+    height: 80px;
+  float:left;
+  margin-left: 5%;
+  width:80px;
+}
+
+.nav-logo img {
+    border-radius: 100px;
+}
+
+/* nav-h */
+
+.nav-h {
+    display: table;
+    width: 100%;
+}
+
+.nav-h>* {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.nav-h .nav-nav {
+    text-align: right;
+}
+
+.nav-h .nav-nav ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-h .nav-nav ul>* {
+    flex-grow: 1;
+}
+
+/* links */
+.nav-nav ul {
+    margin: 0px;
+}
+
+.nav-nav ul * {
+    text-transform: uppercase;
+}
+
+.nav--links li {
+    position: relative;
+}
+
+.nav--links li a {
+    text-decoration: none;
+    color: black;
+    position: relative;
+    display: block;
+    text-align: center;
+    transition: 300ms ease;
+}
+
+.nav--links li a.active {
+    font-weight: bold;
+}
+
+.nav--links li a:hover {
+    background: whitesmoke;
+}
+
+.nav--links li.active::after {
+    position: absolute;
+    content: "";
+    bottom: 0px;
+    height: 4px;
+    background: #b30000;
+    width: 100%;
+    left: 0px;
+}
+
+/* main section */
+.back-image {
+    background: url('./../images/background.jpg');
+
+    background-size: cover;
+    height: calc(100vh);
+    width: 50%;
+    position: fixed;
+    left: 0px;
+    height: 100%;
+
+}
+
+.cont-h {
+    color: black;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    position: fixed;
+    right: 0px;
+    float: right;
+}
+
+
+
+.cont-h h1 {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 40px;
+    color: #04244c;
+    vertical-align: baseline;
+    line-height: 1.25em;
+    font-size: 60px;
+    letter-spacing: normal;
+}
+
+.cont-h h3 {
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #04244c;
+    vertical-align: baseline;
+    font-weight: bold;
+    line-height: 1.67em;
+    font-size: 20px;
+    --min-height: 34px;
+}
+
+.cont-h p{
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 20px;
+    color: #04244c;
+    vertical-align: baseline;
+    line-height: 1.875em;
+    font-size: 15px;
+    --min-height: 113px;
+    --column-width: 490px;
+    --column-flex: 490;
+}
+
+
+.cont-h .btn {
+    margin-top: 5%;
+    padding-left: 4rem;
+    padding-right: 3rem;
+}
+
+.home-btns {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+/* 
+  quiz related css
+ */
+
+.quiz-title {
+    background: #F7F7F7;
+    padding: 20px 10px;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.question-text {
+    display: block;
+    font-weight: 600;
+    padding: 10px;
+    padding-top: 45px;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+
+.question-answers {
+    padding: 1px 1px 1px 10px;
+}
+
+/* for regular input box */
+.question-answers input[type="text"] {
+    padding: 10px 20px;
+    border: 1px solid black;
+}
+
+.question-answers input[type="text"].danger {
+    border-color: red;
+}
+
+.question-answers input[type="text"].success {
+    border-color: green;
+}
+
+.value-l {
+    display: block;
+    padding: 3px;
+}
+
+/* form feedback holders colors */
+.danger {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+.form-check {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.form-check button {
+    border: 0px;
+}
+
+#results {
+    padding: 10px 20px;
+    text-align: center;
+    display: block;
+    font-weight: bold;
+}
+
+body {
+    background: whitesmoke;
+    font-size: 13px;
+    /* color: rgb(56, 56, 56); */
+    margin: 0px;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 0.8rem 2.5rem;
+    border-radius: 100rem;
+    transition: 300ms ease;
+    border: 2px;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn-uppercase {
+    text-transform: uppercase;
+}
+
+.btn-black {
+    background: #b30000;
+    color: #fff;
+    /* font-weight: bold; */
+    letter-spacing: 0.6px;
+}
+
+.btn-black:hover {
+    background: #04244c;
+}
+
+.btn-login {
+    background: #b30000;
+    color: #fff;
+    margin-right: 5%;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+}
+
+.btn-register {
+    background: #fff;
+    color: #b30000;
+    border: 10px;
+    border-color: #b30000;
+    margin-right: 5%;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+}
+
+.btn-register:hover {
+    background: #b30000;
+    color: #fff;
+}
+
+/*
+ * 
+ * for side nav elements 
+ */
+.side--nav-h {
+    background: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.03);
+    min-height: 70vh;
+    position: fixed;
+    width: 25vw;
+    margin: 10px;
+    top: 80px;
+}
+
+.side--nav-h .content-title {
+    background: #F7F7F7;
+    padding: 20px 10px;
+    padding-left: 20px;
+    font-weight: bold;
+    color: #b30000;
+}
+
+.side--nav-h .content-h {
+    padding: 10px 10px;
+    padding-left: 20px;
+    padding-top: 0px;
+    color: #b30000;
+}
+
+.side--nav-h ul {
+    list-style-type: none;
+    padding: 0px;
+
+}
+
+.side--nav-h ul li {
+    padding: 20px 0px;
+}
+
+.side--nav-h ul li:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.side--nav-h li a {
+    display: block;
+    color:  #cc0000;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.side--nav-h li .info {
+    display: block;
+    color: #3d3d3d;
+    font-size: 12px;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+.big{
+    font-size:50px;
+}
+
+.user-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  padding: 50px;
+}
+.side--nav-h li .info span {
+    display: block;
+}
+
+/*
+ * 
+ * main element besides the sidenav */
+.toside--h {
+    position: relative;
+    width: calc((100vw - 25vw) - (15px * 2));
+    margin-left: calc(25vw + 20px);
+    margin-top: 80px;
+    padding-left: 3rem;
+}
+
+/*
+ * Course highlight*/
+
+.subj-h {
+    max-width: 50vw;
+    background: white;
+    box-shadow: 3px 3px 10px 0px ;
+    margin-bottom: 20px;
+}
+
+.subj-h-t {
+    height: 40vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.subj-h-t .overlay {
+    position: absolute;
+    /*background: linear-gradient(transparent, black);*/
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.subj-h-t .overlay * {
+    color: #e0e0e0;
+    text-decoration: none
+}
+
+.subj-h-t .overlay .info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.subj-h-b {
+    padding: 20px 20px;
+    display: block;
+}
+
+.subj-h-b p {
+    margin: 0px;
+}
+
+.subj-h .students-info {
+    padding-top: 10px;
+    display: block;
+    color: #aeaeae;
+}
+
+/* single subject view */
+/* .subj-view .subj-h-b {} */
+
+.subj-view .subj-h-b p {
+    line-break: normal;
+    white-space: normal;
+    padding: 10px 0px;
+    font-size: 1rem;
+}
+
+/* buttons to quiz */
+.subj-quiz-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.subj-quiz-btns a {
+    flex-grow: 1;
+    padding: 10px;
+    color: #b30000;
+    background: #b30000;
+    border: 1px solid rgba(0, 0, 0, 0.548);
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: 300ms ease;
+}
+
+.subj-quiz-btns a:hover {
+    color: #b30000;
+    background:#b30000;
+}
+
+/* contact form */
+.contact{
+    margin: 50px 50 px;
+}
+
+form.contact {
+    margin: 50px auto;
+    padding: 20px 20px;
+    margin-top: 90x;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.03);
+    padding-top: 0px;
+
+}
+
+
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+}
+
+.input-wrapper input,
+.input-wrapper select,
+.input-wrapper textarea {
+    padding: 10px;
+    width: 100%;
+}
+.input-wrapper input{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    border-bottom: 1px solid ;
+
+}
+
+.no-outline:focus {
+  outline: none;
+}
+
+
+.input-wrapper label {
+    width: 20%;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.contact {
+    max-width: 600px;
+    background: white;
+    margin-top: 50px;
+}
+
+.submit-btn-h {
+    text-align: center;
+    padding: 20px;
+}
+#contact-message{
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.title{
+
+   
+    margin-bottom: 10px ;
+      text-align: center;
+      color: #b30000;
+      font-size: 30px;
+      font-weight: bold;
+      line-height: 3 ;
+
+}
+
+
+.back-image2 {
+    background: url('./../images/library.PNG');
+    background-size: cover;
+    height: calc(100vh);
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    height: 100%;
+    z-index: -1;
+}
+
+
+
+/* index design */
+
+.container,
+.row,
+.h2 {
+    text-align: center;
+    margin-top: 6%;
+}
+
+.login-container {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.login-form-1 {
+    padding: 5%;
+    background: #fff;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-1 h3 {
+    text-align: center;
+    color: #333;
+}
+
+.login-form-2 {
+    padding: 5%;
+    background: #1c3c74;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-2 h3 {
+    text-align: center;
+    color: #fff;
+}
+
+.login-container form {
+    padding: 10%;
+}
+
+.btnSubmit {
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+.login-form-1 .btnSubmit {
+    font-weight: 600;
+    color: #fff;
+    background-color: #1c3c74;
+}
+
+.login-form-2 .btnSubmit {
+    font-weight: 600;
+    color: #1c3c74;
+    background-color: #fff;
+}
+
+.login-form-2 .ForgetPwd {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-form-1 .ForgetPwd {
+    color: #1c3c74;
+    font-weight: 600;
+    text-decoration: none;
+}
