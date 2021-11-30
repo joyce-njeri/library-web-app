@@ -27,18 +27,18 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `email` varchar(25) NOT NULL,
-  `pass` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- CREATE TABLE `admin` (
+--   `id` int(11) NOT NULL,
+--   `email` varchar(25) NOT NULL,
+--   `pass` varchar(25) NOT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `email`, `pass`) VALUES
-(1, 'idno22381@gmail.com', '123');
+-- INSERT INTO `admin` (`id`, `email`, `pass`) VALUES
+-- (1, 'idno22381@gmail.com', '123');
 
 -- --------------------------------------------------------
 
@@ -121,23 +121,24 @@ CREATE TABLE `requestbook` (
 -- Table structure for table `userdata`
 --
 
-CREATE TABLE `userdata` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(25) NOT NULL,
+  `firstname` varchar(25) NOT NULL,
+  `lastname` varchar(25) NOT NULL,
+  `role` varchar(25) NOT NULL
   `email` varchar(25) NOT NULL,
-  `pass` varchar(25) NOT NULL,
-  `type` varchar(25) NOT NULL
+  `password` varchar(25) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `userdata`
 --
 
-INSERT INTO `userdata` (`id`, `name`, `email`, `pass`, `type`) VALUES
-(1, 'salman', 'idno22382@gmail.com', '123', 'student'),
-(2, 'Randall Burch', 'voqo@mailinator.com', 'Ratione nulla dolore', 'teacher'),
-(3, 'Gabriel Daugherty', 'bipacer@mailinator.com', 'Voluptas explicabo ', 'teacher'),
-(5, 'salmannew', '1234@gmail.com', '123', 'teacher');
+-- INSERT INTO `users` (`id`, `name`, `email`, `pass`, `type`) VALUES
+-- (1, 'salman', 'idno22382@gmail.com', '123', 'student'),
+-- (2, 'Randall Burch', 'voqo@mailinator.com', 'Ratione nulla dolore', 'teacher'),
+-- (3, 'Gabriel Daugherty', 'bipacer@mailinator.com', 'Voluptas explicabo ', 'teacher'),
+-- (5, 'salmannew', '1234@gmail.com', '123', 'teacher');
 
 --
 -- Indexes for dumped tables
@@ -146,8 +147,8 @@ INSERT INTO `userdata` (`id`, `name`, `email`, `pass`, `type`) VALUES
 --
 -- Indexes for table `admin`
 --
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `admin`
+--   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `book`
@@ -173,8 +174,8 @@ ALTER TABLE `requestbook`
 --
 -- Indexes for table `userdata`
 --
-ALTER TABLE `userdata`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `userdata`
+--   ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -183,8 +184,8 @@ ALTER TABLE `userdata`
 --
 -- AUTO_INCREMENT for table `admin`
 --
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+-- ALTER TABLE `admin`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `book`
@@ -207,7 +208,7 @@ ALTER TABLE `requestbook`
 --
 -- AUTO_INCREMENT for table `userdata`
 --
-ALTER TABLE `userdata`
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
