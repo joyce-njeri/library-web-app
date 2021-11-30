@@ -13,17 +13,17 @@ if (isset($_SESSION['email'])) {
 if (isset($_POST['submit'])) {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
-    $role = $_POST['role'];
     $email = $_POST['email'];
     $password = md5($_POST['password']);
     $cpassword = md5($_POST['cpassword']);
+    $type = $_POST['type'];
 
     if ($password == $cpassword) {
-        $sql = "SELECT * FROM users WHERE email='$email'";
+        $sql = "SELECT * FROM userdata WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sql = "INSERT INTO users (firstname, lastname, role, email, password)
-					VALUES ('$firstname', '$lastname','$role','$email', '$password')";
+            $sql = "INSERT INTO userdata (firstname, lastname, email, pass, type)
+					VALUES ('$firstname', '$lastname','$email', '$password','$type')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 // echo "<script>alert('User Registration Completed.')</script>";
@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
                 <input type="text" placeholder="Last Name" name="lastname" value="<?php echo $lastname; ?>" required>
             </div>
             <div class="input-group">
-                <input list="roles" placeholder="Role" name="role" value="<?php echo $role; ?>" required /></label>
+                <input list="roles" placeholder="Role" name="type" value="<?php echo $type; ?>" required /></label>
                 <datalist id="roles">
                     <option value="Student">
                     <option value="Faculty">

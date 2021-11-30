@@ -1,6 +1,6 @@
 <?php
 //addserver_page.php
-include("data_class.php");
+include("../php-script/data_class.php");
 
 
 
@@ -14,7 +14,7 @@ $bookquantity=$_POST['bookquantity'];
 
 
 
-if (move_uploaded_file($_FILES["bookphoto"]["tmp_name"],"uploads/" . $_FILES["bookphoto"]["name"])) {
+if (move_uploaded_file($_FILES["bookphoto"]["tmp_name"],"../uploads/" . $_FILES["bookphoto"]["name"])) {
 
     $bookpic=$_FILES["bookphoto"]["name"];
 

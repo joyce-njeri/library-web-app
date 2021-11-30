@@ -12,7 +12,7 @@
 <body>
 
     <!-- the header of the website/ the navigation bar -->
-    <header class="header-h header-h-unscrolled">
+    <!-- <header class="header-h header-h-unscrolled">
 
         <div class="nav-h">
             <div class="nav-logo">
@@ -30,7 +30,7 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- <div class="nav--profile">
+                    <div class="nav--profile">
                         <img src="" alt="">
                     </div> -->
 
@@ -38,7 +38,7 @@
             </div>
         </div>
     </header>
-    <!--  -->
+     -->
     <!--  -->
     <main>
         <div class="back-image">
@@ -54,7 +54,7 @@
             </p>
 
             <div class="home-btns">
-                <button class="btn btn-uppercase btn-black btn-register" onclick="window.location.href = 'signup.php';">sign up</button>
+                <button class="btn btn-uppercase btn-black btn-register" onclick="window.location.href = 'signup.php';" style="margin-top: 40px;">register</button>
                 <button class="btn btn-uppercase btn-black btn-login" onclick="window.location.href = 'signin.php';">sign in</button>
             </div>
         </div>

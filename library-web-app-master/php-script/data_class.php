@@ -10,7 +10,7 @@ class data extends db {
     private $branch;
     private $bookprice;
     private $bookquantity;
-    private $role;
+    private $type;
 
     private $book;
     private $userselect;
@@ -28,45 +28,48 @@ class data extends db {
     }
 
 
-    function addnewuser($firstname,$lastname,$userrole,$email,$pass){
+    function addnewuser($firstname,$lastname,$pasword,$email,$type){
         $this->firstname=$firstname;
         $this->lastname=$lastname;
-        $this->userrole=$userrole;
+        $this->pasword=$pasword;
         $this->email=$email;
-        $this->pass=$pass;
+        $this->type=$type;
 
 
-        $q="INSERT INTO users(id, firstname, lastname, role, email, password)VALUES('','$firstname','$lastname','$userrole','$email','$pass')";
+         $q="INSERT INTO userdata(id, firstname, lastname, email, pass,type)VALUES('','$firstname','$lastname','$email','$pasword','$type')";
 
         if($this->connection->exec($q)) {
             header("Location:dashboard.php?msg=New Add done");
         }
+
         else {
             header("Location:dashboard.php?msg=Register Fail");
         }
 
+
+
     }
     function userLogin($t1, $t2) {
-        $q="SELECT * FROM users where email='$t1' and password='$t2'";
+        $q="SELECT * FROM userdata where email='$t1' and pass='$t2'";
         $recordSet=$this->connection->query($q);
         $result=$recordSet->rowCount();
         if ($result > 0) {
 
             foreach($recordSet->fetchAll() as $row) {
                 $logid=$row['id'];
-                header("location: dashboard.php?userlogid=$logid");
+                header("location: student_interface/dashboard.php?userlogid=$logid");
             }
         }
 
         else {
-            header("location: ../index.php?msg=Invalid Credentials");
+            header("location: index.php?msg=Invalid Credentials");
         }
 
     }
 
     function adminLogin($t1, $t2) {
 
-        $q="SELECT * FROM admin where email='$t1' and password='$t2'";
+        $q="SELECT * FROM admin where email='$t1' and pass='$t2'";
         $recordSet=$this->connection->query($q);
         $result=$recordSet->rowCount();
 
@@ -74,12 +77,12 @@ class data extends db {
 
             foreach($recordSet->fetchAll() as $row) {
                 $logid=$row['id'];
-                header("location: dashboard.php?logid=$logid");
+                header("location: ./admin_interface/dashboard.php?logid=$logid");
             }
         }
 
         else {
-            header("location: ../index.php?msg=Invalid Credentials");
+            header("location: index.php?msg=Invalid Credentials");
         }
 
     }
@@ -174,7 +177,7 @@ class data extends db {
     }
 
     function userdata() {
-        $q="SELECT * FROM users ";
+        $q="SELECT * FROM userdata ";
         $data=$this->connection->query($q);
         return $data;
     }
@@ -187,7 +190,7 @@ class data extends db {
     }
 
     function userdetail($id){
-        $q="SELECT * FROM users where id ='$id'";
+        $q="SELECT * FROM userdata where id ='$id'";
         $data=$this->connection->query($q);
         return $data;
     }
@@ -199,34 +202,34 @@ class data extends db {
         $q="SELECT * FROM book where id='$bookid'";
         $recordSetss=$this->connection->query($q);
 
-        $q="SELECT * FROM users where id='$userid'";
+        $q="SELECT * FROM userdata where id='$userid'";
         $recordSet=$this->connection->query($q);
 
         foreach($recordSet->fetchAll() as $row) {
             $username=$row['name'];
-            $userrole=$row['role'];
+            $usertype=$row['type'];
         }
 
         foreach($recordSetss->fetchAll() as $row) {
             $bookname=$row['bookname'];
         }
 
-        if($userrole=="student"){
+        if($usertype=="student"){
             $days=7;
         }
-        if($userrole=="teacher"){
+        if($usertype=="teacher"){
             $days=21;
         }
 
 
-        $q="INSERT INTO requestbook (id,userid,bookid,username,userrole,bookname,issuedays)VALUES('','$userid', '$bookid', '$username', '$userrole', '$bookname', '$days')";
+        $q="INSERT INTO requestbook (id,userid,bookid,username,usertype,bookname,issuedays)VALUES('','$userid', '$bookid', '$username', '$usertype', '$bookname', '$days')";
 
         if($this->connection->exec($q)) {
-            header("Location:otheruser_dashboard.php?userlogid=$userid");
+            header("Location:dashboard.php?userlogid=$userid");
         }
 
         else {
-            header("Location:otheruser_dashboard.php?msg=fail");
+            header("Location:dashboard.php?msg=fail");
         }
 
     }
@@ -262,7 +265,7 @@ class data extends db {
         $q="DELETE from issuebook where id=$id and issuebook='$issuebook' and fine='0' ";
         if($this->connection->exec($q)){
     
-            header("Location:otheruser_dashboard.php?userlogid=$userid");
+            header("Location:dashboard.php?userlogid=$userid");
          }
         //  else{
         //     header("Location:otheruser_dashboard.php?msg=fail");
@@ -276,8 +279,10 @@ class data extends db {
     }
 
     function delteuserdata($id){
-        $q="DELETE from users where id='$id'";
+        $q="DELETE from userdata where id='$id'";
         if($this->connection->exec($q)){
+    
+            
            header("Location:dashboard.php?msg=done");
         }
         else{
@@ -322,7 +327,7 @@ class data extends db {
         $q="SELECT * FROM book where bookname='$book'";
         $recordSetss=$this->connection->query($q);
 
-        $q="SELECT * FROM users where name='$userselect'";
+        $q="SELECT * FROM userdata where name='$userselect'";
         $recordSet=$this->connection->query($q);
         $result=$recordSet->rowCount();
 
@@ -369,7 +374,7 @@ class data extends db {
         }
 
         else {
-            header("location: ../index.php?msg=Invalid Credentials");
+            header("location: index.php?msg=Invalid Credentials");
         }
 
 
@@ -387,7 +392,7 @@ class data extends db {
         $q="SELECT * FROM book where bookname='$book'";
         $recordSetss=$this->connection->query($q);
 
-        $q="SELECT * FROM user where name='$userselect'";
+        $q="SELECT * FROM userdata where email='$userselect'";
         $recordSet=$this->connection->query($q);
         $result=$recordSet->rowCount();
 
@@ -429,7 +434,7 @@ class data extends db {
         }
 
         else {
-            header("location: ../index.php?msg=Invalid Credentials");
+            header("location: index.php?msg=Invalid Credentials");
         }
 
 
