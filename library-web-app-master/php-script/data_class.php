@@ -28,15 +28,15 @@ class data extends db {
     }
 
 
-    function addnewuser($firstname,$lastname,$pasword,$email,$type){
+    function addnewuser($firstname,$lastname,$email,$password,$type){
         $this->firstname=$firstname;
         $this->lastname=$lastname;
-        $this->pasword=$pasword;
         $this->email=$email;
+        $this->password=$password;
         $this->type=$type;
 
 
-         $q="INSERT INTO userdata(id, firstname, lastname, email, pass,type)VALUES('','$firstname','$lastname','$email','$pasword','$type')";
+         $q="INSERT INTO userdata(id, firstname, lastname, email, password,type)VALUES('','$firstname','$lastname','$email','$password','$type')";
 
         if($this->connection->exec($q)) {
             header("Location:dashboard.php?msg=New Add done");

@@ -14,20 +14,20 @@ if (isset($_POST['submit'])) {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
-    $password = md5($_POST['password']);
-    $cpassword = md5($_POST['cpassword']);
+    $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
     $type = $_POST['type'];
 
     if ($password == $cpassword) {
         $sql = "SELECT * FROM userdata WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sql = "INSERT INTO userdata (firstname, lastname, email, pass, type)
+            $sql = "INSERT INTO userdata (firstname, lastname, email, password, type)
 					VALUES ('$firstname', '$lastname','$email', '$password','$type')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 // echo "<script>alert('User Registration Completed.')</script>";
-                header("Location: signin.php");
+                header("Location: ./admin_interface/dashboard.php");
             } else {
                 echo "<script>alert('Woops! Something Went Wrong.')</script>";
             }
