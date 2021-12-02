@@ -1,12 +1,3 @@
-<?php
-
-session_start();
-
-$userloginid=$_SESSION["userid"] = $_GET['userlogid'];
-
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -43,16 +34,16 @@ $userloginid=$_SESSION["userid"] = $_GET['userlogid'];
 
     <main>
 
-        <div class="background"><img class="imgbackground" src="../images/background.jpg" />
+        <!-- <div class="background"><img class="imgbackground" src="../images/background.jpg" /> -->
 
             <div class="container">
 
-                <div class="innerdiv">
+                <div class="innerdiv" style="padding-top: 8%;">
 
                     <div class="role"><Button class="top-btn"> WELCOME TO ADMIN DASHBOARD</Button></div>
 
                     <div class="leftinnerdiv">
-                        <Button class="btn student-btn" onclick="openpart('studentrecord')"> STUDENT REPORT</Button>
+                        <Button class="btn" onclick="openpart('studentrecord')"> STUDENT REPORT</Button>
                         <Button class="btn" onclick="openpart('addperson')"> ADD USER</Button>
                         <Button class="btn" onclick="openpart('updateuser')"> UPDATE USER</Button>
                         <Button class="btn" onclick="openpart('deleteuser')"> DELETE USER</Button>
@@ -61,7 +52,7 @@ $userloginid=$_SESSION["userid"] = $_GET['userlogid'];
                     <!-- add user -->
                     <div class="rightinnerdiv">
                         <div id="addperson" class="innerright portion" style="display: none">
-                            <!-- <Button class="report-btn">ADD USER</Button> -->
+                            <Button class="report-btn detail">ADD USER</Button>
                             <form class="form-group" action="add_person.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label style="color: #04244c;">First Name:</label><input type="text" name="addfirstname" style="width: 250px;" />
@@ -101,7 +92,7 @@ $userloginid=$_SESSION["userid"] = $_GET['userlogid'];
                                                                                     } else {
                                                                                         echo "";
                                                                                     } ?>">
-                            <!-- <Button class="report-btn">VIEW STUDENTS</Button> -->
+                            <Button class="report-btn detail">VIEW USERS</Button>
 
                             <div class="card shadow mb-4">
                                 <div class="card-body">
@@ -138,7 +129,7 @@ $userloginid=$_SESSION["userid"] = $_GET['userlogid'];
                     <!-- update user -->
                     <div class="rightinnerdiv">
                         <div id="updateuser" class="innerright portion" style="display:none;">
-                            <!-- <Button class="report-btn">UPDATE STUDENTS</Button> -->
+                            <Button class="report-btn detail">UPDATE USERS</Button>
 
                             <div class="card shadow mb-4">
                                 <div class="card-body">
@@ -204,13 +195,13 @@ $userloginid=$_SESSION["userid"] = $_GET['userlogid'];
                                     <label style="color: #04244c;">User ID:</label><input type="text" value="<?php echo $useridupdate ?>" name="adduserid" style="width: 250px;"/>
                                 </div>
                                 <div class="form-group">
-                                    <label style="color: #04244c;">First Name:</label><input type="text" placeholder="<?php echo $firstname ?>" name="addfirstname" style="width: 250px;" required/>
+                                    <label style="color: #04244c;">First Name:</label><input type="text" value="<?php echo $firstname ?>" name="addfirstname" style="width: 250px;" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label style="color: #04244c;">Last Name:</label><input type="text" placeholder="<?php echo $lastname ?>" name="addlastname" style="width: 250px;" required/>
+                                    <label style="color: #04244c;">Last Name:</label><input type="text" value="<?php echo $lastname ?>" name="addlastname" style="width: 250px;" required/>
                                 </div>
                                 <div class="form-group">
-                                    <label style="color: #04244c;">Email:</label><input type="email" placeholder="<?php echo $email ?>" name="addemail" style="width: 250px;" required/>
+                                    <label style="color: #04244c;">Email:</label><input type="email" value="<?php echo $email ?>" name="addemail" style="width: 250px;" required/>
                                 </div>
 
                                 <div class="form-group">
@@ -232,7 +223,7 @@ $userloginid=$_SESSION["userid"] = $_GET['userlogid'];
                     <!-- delete user -->
                     <div class="rightinnerdiv">
                         <div id="deleteuser" class="innerright portion" style="display:none;">
-                            <!-- <Button class="report-btn">DELETE STUDENTS</Button> -->
+                            <Button class="report-btn detail">DELETE USER</Button>
 
                             <div class="card shadow mb-4">
                                 <div class="card-body">
@@ -270,7 +261,7 @@ $userloginid=$_SESSION["userid"] = $_GET['userlogid'];
 
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
 
 
 

@@ -1,9 +1,9 @@
 <?php
 include("../php-script/data_class.php");
 
-$delteuser=$_GET['useriddelete'];
+$deleteuser=$_GET['useriddelete'];
 
 
 $obj=new data();
 $obj->setconnection();
-$obj->delteuserdata($delteuser);
+$obj->deleteuserdata($deleteuser);

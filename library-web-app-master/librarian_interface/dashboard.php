@@ -10,7 +10,6 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../js/file_success.js"></script>
     <link href="../css/dashboard.css" rel="stylesheet">
 </head>
 
@@ -35,11 +34,9 @@
 
     <main>
 
-        <div class="background"><img class="imgbackground" src="../images/background.jpg" />
+        <div class="container">
 
-            <div class="container">
-
-                <div class="innerdiv">
+                <div class="innerdiv" style="padding-top: 8%;">
 
                     <div class="role"><Button class="top-btn">WELCOME TO LIBRARIAN DASHBOARD</Button></div>
 
@@ -58,7 +55,7 @@
                     <!--BOOK REQUESTS-->
                     <div class="rightinnerdiv">
                         <div id="bookrequestapprove" class="innerright portion" style="display:none">
-                            <!-- <Button class="report-btn">BOOK REQUESTS</Button> -->
+                            <Button class="report-btn detail">BOOK REQUESTS</Button>
                             <div class="card shadow mb-4">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -98,10 +95,10 @@
                         </div>
                     </div>
 
-                    <!--BOOK REturns-->
+                    <!--BOOK RETURNS-->
                     <div class="rightinnerdiv">
                         <div id="bookreturnapprove" class="innerright portion" style="display:none">
-                            <!-- <Button class="report-btn">BOOK REQUESTS</Button> -->
+                            <Button class="report-btn detail">BOOK RETURNS</Button>
                             <div class="card shadow mb-4">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -149,19 +146,19 @@
                             <form action="add_book.php" method="post" enctype="multipart/form-data" style="padding-left: 50px;">
                                 <div class="form-group">
                                     <label style="color: #04244c;">Book Name:</label>
-                                    <input type="text" name="bookname">
+                                    <input type="text" name="bookname" style="width: 80%;">
                                 </div>
                                 <div class="form-group">
                                     <label style="color: #04244c;">Detail:</label>
-                                    <input type="text" name="bookdetail">
+                                    <input type="text" name="bookdetail" style="width: 80%;height:auto;">
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Author:</label>
-                                    <input type="text" name="bookauthor">
+                                    <input type="text" name="bookauthor" style="width: 80%;">
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Publication:</label>
-                                    <input type="text" name="bookpub">
+                                    <input type="date" name="bookpub">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1" style="color: #04244c;">Category:</label>
@@ -193,7 +190,7 @@
                     <!--VIEW ISSUE REPORT-->
                     <div class="rightinnerdiv">
                         <div id="issuebookreport" class="innerright portion" style="display:none">
-                            <!-- <Button class="report-btn">VIEW ISSUE REPORT</Button> -->
+                            <Button class="report-btn detail">VIEW ISSUE REPORT</Button>
                             <div class="card shadow mb-4">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -204,8 +201,7 @@
                                         $u->issuereport();
                                         $recordset = $u->issuereport();
 
-                                        $table = "<table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'><tr><th style='  border: 1px solid #ddd;
-            padding: 8px;'>Issue Name</th><th>Book Name</th><th>Issue Date</th><th>Return Date</th><th>Fine</th></th><th>Issue Type</th></tr>";
+                                        $table = "<table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'><tr><th>Issue Name</th><th>Book Name</th><th>Issue Date</th><th>Return Date</th><th>Fine</th></th><th>Issue Type</th></tr>";
 
                                         foreach ($recordset as $row) {
                                             $table .= "<tr>";
@@ -216,7 +212,7 @@
                                             $table .= "<td>$row[7]</td>";
                                             $table .= "<td>$row[8]</td>";
                                             $table .= "<td>$row[4]</td>";
-                                            // $table.="<td><a href='otheruser_dashboard.php?returnid=$row[0]&userlogid=$userloginid'>Return</a></td>";
+                                            // $table.="<td><a href='dashboard.php?returnid=$row[0]&userlogid=$userloginid'>Return</a></td>";
                                             $table .= "</tr>";
                                             // $table.=$row[0];
                                         }
@@ -233,9 +229,9 @@
                     <!--issue book -->
                     <div class="rightinnerdiv">
                         <div id="issuebook" class="innerright portion" style="display:none">
-                            <!-- <Button class="report-btn">ISSUE BOOK</Button> -->
+                            <Button class="report-btn detail">LEND BOOK</Button>
                             <form action="issue_book.php" method="post" enctype="multipart/form-data">
-                                <div class="addbook-input">
+                                <div class="addbook-input"  style="margin-top:20px;">
                                     <label for="book" style="color: #04244c;">Choose Book:</label>
 
                                     <select name="book" style="width: 280px; text-align: center;">
@@ -282,7 +278,7 @@
                                                                                 } else {
                                                                                     echo "";
                                                                                 } ?>">
-                            <!-- <Button class="report-btn">VIEW BOOKS</Button> -->
+                            <Button class="report-btn detail">VIEW BOOKS</Button>
                             <div class="card shadow mb-4">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -361,7 +357,7 @@
                     <div class="rightinnerdiv">
                         <div id="updatebook" class="innerright portion" style="display:none";
                                                                                 } ?>">
-                            <!-- <Button class="report-btn">UPDATE BOOKS</Button> -->
+                            <Button class="report-btn detail">UPDATE BOOKS</Button>
                             <div class="card shadow mb-4">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -462,7 +458,7 @@
                                     <label for="formGroupExampleInput" style="color: #04244c;">Quantity:</label>
                                     <input type="number" name="bookquantity" value="<?php echo $bookquantity ?>">
                                 </div>
-                                <div class="form-group" style="display: flex; flex-direction: column;">
+                                <div class="form-group">
                                     <label for="exampleFormControlFile1" style="color: #04244c;">Book Photo:</label>
                                     <input type="file" id="file-uploader" name="bookphoto">
                                     <p id="feedback"></p>
@@ -475,7 +471,7 @@
                     <!--DELETE BOOKS-->
                     <div class="rightinnerdiv">
                         <div id="deletebook" class="innerright portion" style="display:none;">
-                            <!-- <Button class="report-btn">DELETE BOOKS</Button> -->
+                            <Button class="report-btn detail">DELETE BOOKS</Button>
                             <div class="card shadow mb-4">
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -513,7 +509,6 @@
 
 
             </div>
-        </div>
         </div>
 
 

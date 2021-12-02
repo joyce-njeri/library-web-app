@@ -133,6 +133,11 @@ class data extends db {
         $data=$this->connection->query($q);
         return $data;
     }
+    function getbooklist() {
+        $q="SELECT bookname FROM book ";
+        $data=$this->connection->query($q);
+        return $data;
+    }
     function getbookissue(){
         $q="SELECT * FROM book where bookava !=0 ";
         $data=$this->connection->query($q);
@@ -259,7 +264,7 @@ class data extends db {
         }
     }
 
-    function delteuserdata($id){
+    function deleteuserdata($id){
         $q="DELETE from userdata where id='$id'";
         if($this->connection->exec($q)){
     
