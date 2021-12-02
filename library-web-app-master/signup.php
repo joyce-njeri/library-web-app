@@ -18,10 +18,41 @@ if (isset($_POST['submit'])) {
     $cpassword = $_POST['cpassword'];
     $type = $_POST['type'];
 
+     $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
+
+
+    // form validation: ensure that the form is correctly filled ...
+    // by adding (array_push()) corresponding error unto $errors array
+
+    if (empty($firstname)) { array_push($errors, "First name is required"); }
+    if (empty($lastname)) { array_push($errors, "Last name is required"); }
+    if (empty($email)) { array_push($errors, "Email is required"); }
+    if (empty($password)) { array_push($errors, "Password is required"); }
+    if ($password != $cpassword) {
+            array_push($errors, "The two passwords do not match");
+          }
+
+    $sql = "SELECT * FROM userdata WHERE email='$email' LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    $user = mysqli_fetch_assoc($result);
+
+    if($user){
+        if ($user['email'] === $email) {
+      array_push($errors, "email already exists");
+    }
+
+    }
+
+
     if ($password == $cpassword) {
         $sql = "SELECT * FROM userdata WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
+            $password = md5($password)
             $sql = "INSERT INTO userdata (firstname, lastname, email, password, type)
 					VALUES ('$firstname', '$lastname','$email', '$password','$type')";
             $result = mysqli_query($conn, $sql);

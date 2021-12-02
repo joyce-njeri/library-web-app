@@ -14,6 +14,12 @@ if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
+	/* the two variables will lead to the prevention of the SQL injection attack*/
+
+    $email = mysqli_real_escape_string($conn,$_POST['email']);
+    $password = mysqli_real_escape_string($conn,$_POST['password']);
+
+
 	$sql = "SELECT * FROM userdata WHERE email='$email' AND password='$password'";
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
