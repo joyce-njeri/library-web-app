@@ -44,7 +44,7 @@
                     <div class="role"><Button class="top-btn">WELCOME TO LIBRARIAN DASHBOARD</Button></div>
 
                     <div class="leftinnerdiv">
-                        <Button class="btn student-btn" onclick="openpart('bookreport')">Catalogue</Button>
+                        <Button class="btn" onclick="openpart('bookreport')">Catalogue</Button>
                         <Button class="btn" onclick="openpart('addbook')">Record Book</Button>
                         <Button class="btn" onclick="openpart('updatebook')">Update Book</Button>
                         <Button class="btn" onclick="openpart('deletebook')">Delete Book</Button>
@@ -54,6 +54,7 @@
                         <Button class="btn" onclick="openpart('issuebookreport')"> Issue Report</Button>
                         <a href="../logout.php"><Button class="btn logout-btn"> LOGOUT</Button></a>
                     </div>
+
                     <!--BOOK REQUESTS-->
                     <div class="rightinnerdiv">
                         <div id="bookrequestapprove" class="innerright portion" style="display:none">
@@ -69,7 +70,7 @@
                                         $recordset = $u->requestbookdata();
 
                                         $table = "<table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'><tr><th style='  border: 1px solid #ddd;
-            padding: 8px;'>Person Name</th><th>Role</th><th>Book Name</th><th>Days</th><th>Approve</th></tr>";
+            padding: 8px;'>Person Email</th><th>Role</th><th>Book Name</th><th>Days</th><th>Approve</th></tr>";
                                         foreach ($recordset as $row) {
                                             $table .= "<tr>";
                                             "<td>$row[0]</td>";
@@ -80,7 +81,7 @@
                                             $table .= "<td>$row[4]</td>";
                                             $table .= "<td>$row[5]</td>";
                                             $table .= "<td>$row[6]</td>";
-                                            $table .= "<td><a href='approve_request.php?reqid=$row[0]&book=$row[5]&userselect=$row[3]&days=$row[6]'><button type='button' class='btn btn-primary'>Approve</button></a></td>";
+                                            $table .= "<td><a href='approve_request.php?book=$row[5]&userselect=$row[3]&days=$row[6]&reqid=$row[0]'><button type='button' class='btn btn-primary'>Approve</button></a></td>";
                                             // $table .= "<td><a href='approve_request.php?reqid=$row[0]&book=$row[5]&userselect=$row[3]&days=$row[6]'>Approved</a></td>";
                                             // $table.="<td><a href='delete_book.php?deletebookid=$row[0]'>Delete</a></td>";
                                             $table .= "</tr>";
@@ -143,7 +144,8 @@
                     <!--RECORD NEW BOOK-->
                     <div class="rightinnerdiv">
                         <div id="addbook" class="innerright portion" style="display:none">
-                            <!-- <Button class="report-btn">ADD NEW BOOK</Button> -->
+                            <Button class="report-btn detail">ADD NEW BOOK</Button>
+                            <br>
                             <form action="add_book.php" method="post" enctype="multipart/form-data" style="padding-left: 50px;">
                                 <div class="form-group">
                                     <label style="color: #04244c;">Book Name:</label>
@@ -272,54 +274,7 @@
                             </form>
                         </div>
                     </div>
-
-                    <!--BOOK DETAIL-->
-                    <div class="rightinnerdiv">
-                        <div id="bookdetail" class="innerright portion" style="<?php if (!empty($_REQUEST['viewid'])) {
-                                                                                    $viewid = $_REQUEST['viewid'];
-                                                                                } else {
-                                                                                    echo "display:none";
-                                                                                } ?>">
-
-                            <Button class="report-btn detail">BOOK DETAIL</Button>
-                            <!-- </br> -->
-                            <?php
-                            $u = new data;
-                            $u->setconnection();
-                            $u->getbookdetail($viewid);
-                            $recordset = $u->getbookdetail($viewid);
-                            foreach ($recordset as $row) {
-
-                                $bookid = $row[0];
-                                $bookimg = $row[1];
-                                $bookname = $row[2];
-                                $bookdetail = $row[3];
-                                $bookauthor = $row[4];
-                                $bookpub = $row[5];
-                                $branch = $row[6];
-                                $bookprice = $row[7];
-                                $bookquantity = $row[8];
-                                $bookava = $row[9];
-                                $bookrent = $row[10];
-                            }
-                            ?>
-
-
-                            <img width='150px' height='150px' style='border:1px solid #333333; float:left;margin-left:20px' src="../images/<?php echo $bookimg ?> " />
-                            <!-- </br> -->
-
-                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspName: &nbsp&nbsp<?php echo $bookname ?></p>
-                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspAuthor: &nbsp&nbsp<?php echo $bookauthor ?></p>
-                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspCategory: &nbsp&nbsp<?php echo $branch ?></p>
-                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspPrice: &nbsp&nbsp$<?php echo $bookprice ?></p>
-                            <br>
-                            <p style="color:#04244c; margin-left: 20px;">Summary: &nbsp&nbsp<?php echo $bookdetail ?></p>
-
-
-                        </div>
-                    </div>
-
-
+                    
                     <!--VIEW BOOKS-->
                     <div class="rightinnerdiv">
                         <div id="bookreport" class="innerright portion" style="<?php if (!empty($_REQUEST['viewid'])) {
@@ -358,6 +313,48 @@
                             </div>
                         </div>
 
+                    </div>
+
+                    <!--BOOK DETAIL-->
+                    <div class="rightinnerdiv">
+                        <div id="bookdetail" class="innerright portion"  style="<?php  if(!empty($_REQUEST['viewid'])){ $viewid=$_REQUEST['viewid'];} else {echo "display:none"; }?>">
+
+                            <Button class="report-btn detail">BOOK DETAIL</Button>
+                            <!-- </br> -->
+                            <?php
+                            $u = new data;
+                            $u->setconnection();
+                            $u->getbookdetail($viewid);
+                            $recordset = $u->getbookdetail($viewid);
+                            foreach ($recordset as $row) {
+
+                                $bookid = $row[0];
+                                $bookimg = $row[1];
+                                $bookname = $row[2];
+                                $bookdetail = $row[3];
+                                $bookauthor = $row[4];
+                                $bookpub = $row[5];
+                                $branch = $row[6];
+                                $bookprice = $row[7];
+                                $bookquantity = $row[8];
+                                $bookava = $row[9];
+                                $bookrent = $row[10];
+                            }
+                            ?>
+
+
+                            <img width='150px' height='150px' style='border:1px solid #333333; float:left;margin-left:20px' src="../images/<?php echo $bookimg ?> " />
+                            <!-- </br> -->
+
+                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspName: &nbsp&nbsp<?php echo $bookname ?></p>
+                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspAuthor: &nbsp&nbsp<?php echo $bookauthor ?></p>
+                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspCategory: &nbsp&nbsp<?php echo $branch ?></p>
+                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspPrice: &nbsp&nbsp$<?php echo $bookprice ?></p>
+                            <br>
+                            <p style="color:#04244c; margin-left: 20px;">Summary: &nbsp&nbsp<?php echo $bookdetail ?></p>
+
+
+                        </div>
                     </div>
 
                     <!--UPDATE BOOKS-->

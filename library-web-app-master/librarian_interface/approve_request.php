@@ -2,14 +2,11 @@
 
 include("../php-script/data_class.php");
 
-
-
-
-$request=$_GET['reqid'];
 $book=$_GET['book'];
 $userselect= $_GET['userselect'];
-$getdate= date("d/m/Y");
 $days= $_GET['days'];
+$request=$_GET['reqid'];
+$getdate= date("d/m/Y");
 
 $returnDate=Date('d/m/Y', strtotime('+'.$days.'days'));
 

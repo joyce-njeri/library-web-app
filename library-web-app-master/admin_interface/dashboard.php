@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+$userloginid=$_SESSION["userid"] = $_GET['userlogid'];
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -25,7 +34,7 @@
     }
 
     if ($msg == "done") {
-        echo "<div class='alert alert-success' role='alert'>Successfully Done</div>";
+        echo "<div class='alert alert-success' role='alert'>Congrats! Successfully Done</div>";
     } elseif ($msg == "fail") {
         echo "<div class='alert alert-danger' role='alert'>Fail</div>";
     }

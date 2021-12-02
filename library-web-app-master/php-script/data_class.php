@@ -174,7 +174,7 @@ class data extends db {
         $recordSet=$this->connection->query($q);
 
         foreach($recordSet->fetchAll() as $row) {
-            $username=$row['name'];
+            $email=$row['email'];
             $usertype=$row['type'];
         }
 
@@ -182,15 +182,15 @@ class data extends db {
             $bookname=$row['bookname'];
         }
 
-        if($usertype=="student"){
+        if($usertype=="Student"){
             $days=7;
         }
-        if($usertype=="teacher"){
+        if($usertype=="Faculty"){
             $days=21;
         }
 
 
-        $q="INSERT INTO requestbook (id,userid,bookid,username,usertype,bookname,issuedays)VALUES('','$userid', '$bookid', '$username', '$usertype', '$bookname', '$days')";
+        $q="INSERT INTO requestbook (id,userid,bookid,username,usertype,bookname,issuedays)VALUES('','$userid', '$bookid', '$email', '$usertype', '$bookname', '$days')";
 
         if($this->connection->exec($q)) {
             header("Location:dashboard.php?userlogid=$userid");
@@ -332,7 +332,7 @@ class data extends db {
         $q="SELECT * FROM book where bookname='$book'";
         $recordSetss=$this->connection->query($q);
 
-        $q="SELECT * FROM userdata where name='$userselect'";
+        $q="SELECT * FROM userdata where email='$userselect'";
         $recordSet=$this->connection->query($q);
         $result=$recordSet->rowCount();
 
@@ -379,7 +379,7 @@ class data extends db {
         }
 
         else {
-            header("location: index.php?msg=Invalid Credentials");
+            header("location: ../index.php?msg=Invalid Credentials");
         }
 
 
@@ -439,7 +439,7 @@ class data extends db {
         }
 
         else {
-            header("location: index.php?msg=Invalid Credentials");
+            header("location:../index.php.php?msg=Invalid Credentials");
         }
 
 

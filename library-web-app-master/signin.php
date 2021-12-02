@@ -21,14 +21,23 @@ if (isset($_POST['submit'])) {
 		$_SESSION['email'] = $row['email'];
 		$logtype=$row['type'];
 
-		if ($logtype == 'Admin')
-			header("Location: ./admin_interface/dashboard.php");
-		else if ($logtype == 'Librarian')
-			header("Location: ./librarian_interface/dashboard.php");
-		else if ($logtype == 'Faculty')
-			header("Location: ./faculty_interface/dashboard.php");
-		else if ($logtype == 'Student')
-			header("Location: ./student_interface/dashboard.php");
+		if ($logtype == 'Admin') {
+			$logid=$row['id'];
+			header("Location: ./admin_interface/dashboard.php?userlogid=$logid");
+		}
+		else if ($logtype == 'Librarian') {
+			$logid=$row['id'];
+			header("Location: ./librarian_interface/dashboard.php?userlogid=$logid");
+		}
+		else if ($logtype == 'Faculty') {
+			$logid=$row['id'];
+			header("Location: ./faculty_interface/dashboard.php?userlogid=$logid");
+		}
+		else if ($logtype == 'Student') {
+			$logid=$row['id'];
+			header("Location: ./student_interface/dashboard.php?userlogid=$logid");
+		}
+
 
 	} else {
 		echo "<script>alert('Woops! Email or password is Wrong.')</script>";
