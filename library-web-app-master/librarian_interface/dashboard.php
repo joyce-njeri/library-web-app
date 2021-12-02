@@ -308,14 +308,12 @@
                             <img width='150px' height='150px' style='border:1px solid #333333; float:left;margin-left:20px' src="../images/<?php echo $bookimg ?> " />
                             <!-- </br> -->
 
-                            <p style="color:black"><u>Book Name:</u> &nbsp&nbsp<?php echo $bookname ?></p>
-                            <p style="color:black"><u>Book Detail:</u> &nbsp&nbsp<?php echo $bookdetail ?></p>
-                            <p style="color:black"><u>Book Author:</u> &nbsp&nbsp<?php echo $bookauthor ?></p>
-                            <p style="color:black"><u>Book Publisher:</u> &nbsp&nbsp<?php echo $bookpub ?></p>
-                            <p style="color:black"><u>Book Branch:</u> &nbsp&nbsp<?php echo $branch ?></p>
-                            <p style="color:black"><u>Book Price:</u> &nbsp&nbsp<?php echo $bookprice ?></p>
-                            <p style="color:black"><u>Book Available:</u> &nbsp&nbsp<?php echo $bookava ?></p>
-                            <p style="color:black"><u>Book Rent:</u> &nbsp&nbsp<?php echo $bookrent ?></p>
+                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspName: &nbsp&nbsp<?php echo $bookname ?></p>
+                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspAuthor: &nbsp&nbsp<?php echo $bookauthor ?></p>
+                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspCategory: &nbsp&nbsp<?php echo $branch ?></p>
+                            <p style="color:#04244c">&nbsp&nbsp&nbsp&nbspPrice: &nbsp&nbsp$<?php echo $bookprice ?></p>
+                            <br>
+                            <p style="color:#04244c; margin-left: 20px;">Summary: &nbsp&nbsp<?php echo $bookdetail ?></p>
 
 
                         </div>
@@ -401,7 +399,6 @@
                     </div>
 
                     <!-- update details-->
-
                     <div class="rightinnerdiv">
                         <div id="updatebookdetail" class="innerright portion" style="<?php if (!empty($_REQUEST['viewid'])) {
                                                                                     $viewid = $_REQUEST['viewid'];
