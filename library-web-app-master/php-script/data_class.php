@@ -271,6 +271,30 @@ class data extends db {
         }
     }
 
+    function updatebook($id, $bookpic, $bookname, $bookdetail, $bookauthor, $bookpub, $branch, $bookprice, $bookquantity) {
+        $this->$id=$id;
+        $this->$bookpic=$bookpic;
+        $this->bookname=$bookname;
+        $this->bookdetail=$bookdetail;
+        $this->bookauthor=$bookauthor;
+        $this->bookpub=$bookpub;
+        $this->branch=$branch;
+        $this->bookprice=$bookprice;
+        $this->bookquantity=$bookquantity;
+
+        $q="UPDATE book SET bookpic = '$bookpic', bookname = '$bookname', bookdetail = '$bookdetail', bookauthor = '$bookauthor', 
+        bookpub = '$bookpub', branch = '$branch', bookprice = '$bookprice', bookquantity = '$bookquantity' where id='$id'";
+
+        if($this->connection->exec($q)) {
+            header("Location:dashboard.php?msg=done");
+        }
+
+        else {
+            header("Location:dashboard.php?msg=fail");
+        }
+
+    }
+
     function deletebook($id){
         $q="DELETE from book where id='$id'";
         if($this->connection->exec($q)){

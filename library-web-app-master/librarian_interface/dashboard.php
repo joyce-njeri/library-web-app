@@ -10,6 +10,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/file_success.js"></script>
     <link href="../css/dashboard.css" rel="stylesheet">
 </head>
 
@@ -95,9 +96,9 @@
                             </div>
                         </div>
                     </div>
-                    
-                         <!--BOOK REturns-->
-                         <div class="rightinnerdiv">
+
+                    <!--BOOK REturns-->
+                    <div class="rightinnerdiv">
                         <div id="bookreturnapprove" class="innerright portion" style="display:none">
                             <!-- <Button class="report-btn">BOOK REQUESTS</Button> -->
                             <div class="card shadow mb-4">
@@ -186,7 +187,7 @@
                             </form>
                         </div>
                     </div>
-                    
+
                     <!--VIEW ISSUE REPORT-->
                     <div class="rightinnerdiv">
                         <div id="issuebookreport" class="innerright portion" style="display:none">
@@ -360,10 +361,11 @@
                         </div>
 
                     </div>
-                    
+
                     <!--UPDATE BOOKS-->
                     <div class="rightinnerdiv">
-                        <div id="updatebook" class="innerright portion" style="display:none;">
+                        <div id="updatebook" class="innerright portion" style="display:none";
+                                                                                } ?>">
                             <!-- <Button class="report-btn">UPDATE BOOKS</Button> -->
                             <div class="card shadow mb-4">
                                 <div class="card-body">
@@ -383,7 +385,8 @@
                                             $table .= "<td>$row[8]</td>";
                                             $table .= "<td>$row[9]</td>";
                                             $table .= "<td>$row[10]</td>";
-                                            $table .= "<td><a href='update_book.php?viewid=$row[0]'><button type='button' class='btn update-btn btn-primary view-btn'>Update Book</button></a></td>";
+                                            $bookviewid = $row[0];
+                                            $table .= "<td><a href='dashboard.php?viewid=$row[0]'><button type='button' class='btn update-btn btn-primary view-btn'>Update Book</button></a></td>";
                                             $table .= "</tr>";
                                         }
                                         $table .= "</table>";
@@ -396,7 +399,85 @@
                         </div>
 
                     </div>
-                    
+
+                    <!-- update details-->
+
+                    <div class="rightinnerdiv">
+                        <div id="updatebookdetail" class="innerright portion" style="<?php if (!empty($_REQUEST['viewid'])) {
+                                                                                    $viewid = $_REQUEST['viewid'];
+                                                                                } else {
+                                                                                    echo "display:none";
+                                                                                } ?>">
+                        <Button class="report-btn detail">UPDATE BOOK DETAILS</Button>
+                            <!-- </br> -->
+                            <?php
+                            $u = new data;
+                            $u->setconnection();
+                            $u->getbookdetail($viewid);
+                            $recordset = $u->getbookdetail($viewid);
+                            foreach ($recordset as $row) {
+
+                                $bookid = $row[0];
+                                $bookimg = $row[1];
+                                $bookname = $row[2];
+                                $bookdetail = $row[3];
+                                $bookauthor = $row[4];
+                                $bookpub = $row[5];
+                                $branch = $row[6];
+                                $bookprice = $row[7];
+                                $bookquantity = $row[8];
+                            }
+                            ?>
+
+                            <form action="update_book.php" method="post" enctype="multipart/form-data" style="padding-left: 50px;">
+                                <div class="form-group">
+                                    <label style="color: #04244c;">Book ID:</label>
+                                    <input type="text" name="bookid" value="<?php echo $bookid ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #04244c;">Book Name:</label>
+                                    <input type="text" name="bookname" value="<?php echo $bookname ?>" style="width: 280px; text-align:center;">
+                                </div>
+                                <div class="form-group">
+                                    <label style="color: #04244c;">Detail:</label>
+                                    <textarea type="textarea" name="bookdetail" style="width: 500px;"><?php echo $bookdetail ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput" style="color: #04244c;">Author:</label>
+                                    <input type="text" name="bookauthor" value="<?php echo $bookauthor ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput" style="color: #04244c;">Publication:</label>
+                                    <input type="text" name="bookpub" value="<?php echo $bookpub ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1" style="color: #04244c;">Category:</label>
+                                    <select name="branch" style="text-align:center;">
+                                        <option name="branch">Fiction</option>
+                                        <option name="branch">Drama</option>
+                                        <option name="branch">Journal</option>
+                                        <option name="branch">Kids</option>
+                                        <option name="branch">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput" style="color: #04244c;">Price:</label>
+                                    <input type="number" name="bookprice" value="<?php echo $bookprice ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput" style="color: #04244c;">Quantity:</label>
+                                    <input type="number" name="bookquantity" value="<?php echo $bookquantity ?>">
+                                </div>
+                                <div class="form-group" style="display: flex; flex-direction: column;">
+                                    <label for="exampleFormControlFile1" style="color: #04244c;">Book Photo:</label>
+                                    <input type="file" id="file-uploader" name="bookphoto">
+                                    <p id="feedback"></p>
+                                </div>
+                                <button type="submit" class="submit-btn btn-primary" style="margin-top: -3px;">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
                     <!--DELETE BOOKS-->
                     <div class="rightinnerdiv">
                         <div id="deletebook" class="innerright portion" style="display:none;">
@@ -432,7 +513,7 @@
                         </div>
 
                     </div>
-                
+
                 </div>
 
 
