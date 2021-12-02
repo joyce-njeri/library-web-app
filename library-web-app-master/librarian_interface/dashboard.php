@@ -236,7 +236,7 @@
                                 <div class="addbook-input">
                                     <label for="book" style="color: #04244c;">Choose Book:</label>
 
-                                    <select name="book" style="width: 220px; text-align: center;">
+                                    <select name="book" style="width: 280px; text-align: center;">
                                         <?php
                                         $u = new data;
                                         $u->setconnection();
@@ -252,7 +252,7 @@
 
 
                                     <label for="Select Student" style="color: #04244c;">Select Email:</label>
-                                    <select name="userselect" style="width: 220px; text-align: center;">
+                                    <select name="userselect" style="width: 280px; text-align: center;">
                                         <?php
                                         $u = new data;
                                         $u->setconnection();
