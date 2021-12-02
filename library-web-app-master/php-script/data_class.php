@@ -143,6 +143,11 @@ class data extends db {
         $data=$this->connection->query($q);
         return $data;
     }
+    function getbookreturn() {
+        $q="SELECT * FROM returnbook ";
+        $data=$this->connection->query($q);
+        return $data;
+    }
 
     function userdata() {
         $q="SELECT * FROM userdata ";
@@ -218,6 +223,8 @@ class data extends db {
         $recordSet=$this->connection->query($q);
 
         foreach($recordSet->fetchAll() as $row) {
+            $email=$row['issuename'];
+            $bookname=$row['issuebook'];
             $userid=$row['userid'];
             $issuebook=$row['issuebook'];
             $fine=$row['fine'];
@@ -234,16 +241,40 @@ class data extends db {
         }
         $q="UPDATE book SET bookava='$bookava', bookrent='$bookrentel' where bookname='$issuebook'";
         $this->connection->exec($q);
-
         $q="DELETE from issuebook where id=$id and issuebook='$issuebook' and fine='0' ";
         if($this->connection->exec($q)){
-    
+            $q="INSERT INTO returnbook (id,userid,bookid,username,bookname)VALUES('','$userid', '$id', '$email', '$bookname')";
+            $this->connection->exec($q);
             header("Location:dashboard.php?userlogid=$userid");
          }
-        //  else{
-        //     header("Location:otheruser_dashboard.php?msg=fail");
-        //  }
+         else{
+            header("Location:dashboard.php?msg=fail");
+         }
         }
+        // if($fine!=0){
+        //     header("Location:otheruser_dashboard.php?userlogid=$userid&msg=fine");
+        // }
+       
+
+    }
+
+    function returnbookapprove($id){
+        
+        $q="SELECT * FROM returnbook where id='$id'";
+        $recordSet=$this->connection->query($q);
+
+        foreach($recordSet->fetchAll() as $row) {
+            $userid=$row['userid'];
+        }
+
+        $q="DELETE from returnbook where id=$id";
+        if($this->connection->exec($q)){
+            header("Location:dashboard.php?userlogid=$userid");
+         }
+         else{
+            header("Location:dashboard.php?msg=fail");
+         }
+        
         // if($fine!=0){
         //     header("Location:otheruser_dashboard.php?userlogid=$userid&msg=fine");
         // }
@@ -389,6 +420,8 @@ class data extends db {
 
 
     }
+
+    
     
     // issue book
     function issuebook($book,$userselect,$days,$getdate,$returnDate){

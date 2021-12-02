@@ -106,11 +106,11 @@
                                         <?php
                                         $u = new data;
                                         $u->setconnection();
-                                        $u->requestbookdata();
-                                        $recordset = $u->requestbookdata();
+                                        $u->getbookreturn();
+                                        $recordset = $u->getbookreturn();
 
                                         $table = "<table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'><tr><th style='  border: 1px solid #ddd;
-            padding: 8px;'>Person Name</th><th>Role</th><th>Book Name</th><th>Days</th><th>Approve</th></tr>";
+            padding: 8px;'>Person Name</th><th>Book Name</th><th>Approve</th></tr>";
                                         foreach ($recordset as $row) {
                                             $table .= "<tr>";
                                             "<td>$row[0]</td>";
@@ -119,11 +119,7 @@
 
                                             $table .= "<td>$row[3]</td>";
                                             $table .= "<td>$row[4]</td>";
-                                            $table .= "<td>$row[5]</td>";
-                                            $table .= "<td>$row[6]</td>";
-                                            $table .= "<td><a href='approve_return.php?reqid=$row[0]&book=$row[5]&userselect=$row[3]&days=$row[6]'><button type='button' class='btn btn-primary'>Approve</button></a></td>";
-                                            // $table .= "<td><a href='approve_request.php?reqid=$row[0]&book=$row[5]&userselect=$row[3]&days=$row[6]'>Approved</a></td>";
-                                            // $table.="<td><a href='delete_book.php?deletebookid=$row[0]'>Delete</a></td>";
+                                            $table .= "<td><a href='approve_return.php?returnid=$row[0]'><button type='button' class='btn btn-primary'>Approve</button></a></td>";
                                             $table .= "</tr>";
                                             // $table.=$row[0];
                                         }

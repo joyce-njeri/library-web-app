@@ -264,8 +264,7 @@ $userloginid = $_SESSION["userid"] = $_GET['userlogid'];
                                             $table .= "<td>$row[6]</td>";
                                             $table .= "<td>$row[7]</td>";
                                             $table .= "<td>$row[8]</td>";
-                                            $table .= "<td><a href='return_book.php?viewid=$row[0]'><button type='button' class='btn update-btn btn-primary'>Return Book</button></a></td>";
-                                            // $table.="<td><a href='otheruser_dashboard.php?returnid=$row[0]&userlogid=$userloginid'>Return</a></td>";
+                                            $table .= "<td><a href='return_book.php?returnid=$row[0]'><button type='button' class='btn update-btn btn-primary'>Return Book</button></a></td>";
                                             $table .= "</tr>";
                                             // $table.=$row[0];
                                         }
