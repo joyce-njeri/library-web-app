@@ -27,7 +27,14 @@ if (isset($_POST['submit'])) {
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 // echo "<script>alert('User Registration Completed.')</script>";
-                header("Location: ./admin_interface/dashboard.php");
+                if ($type == 'Admin')
+                    header("Location: ./admin_interface/dashboard.php");
+                else if ($type == 'Librarian')
+                    header("Location: ./librarian_interface/dashboard.php");
+                else if ($type == 'Faculty')
+                    header("Location: ./faculty_interface/dashboard.php");
+                else 
+                    header("Location: ./student_interface/dashboard.php");
             } else {
                 echo "<script>alert('Woops! Something Went Wrong.')</script>";
             }

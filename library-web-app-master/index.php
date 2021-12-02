@@ -32,12 +32,11 @@
                     </div>
                     <div class="nav--profile">
                         <img src="" alt="">
-                    </div> -->
-
+                    </div> 
                 </div>
             </div>
         </div>
-    </header>
+    </header> -->
      
     <!--  -->
     <main>
@@ -54,8 +53,8 @@
             </p>
 
             <div class="home-btns">
-                <button class="btn btn-uppercase btn-black btn-register" onclick="window.location.href = 'signup.php';" style="margin-top: 40px;">register</button>
-                <button class="btn btn-uppercase btn-black btn-login" onclick="window.location.href = 'signin.php';">sign in</button>
+            <button class="btn btn-uppercase btn-black btn-login" onclick="window.location.href = 'signin.php';">sign in</button>
+                <button class="btn btn-uppercase btn-black btn-register" onclick="window.location.href = 'signup.php';" style="margin-top: 40px; margin-left:20px;">register</button>
             </div>
         </div>
 

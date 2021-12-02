@@ -49,44 +49,6 @@ class data extends db {
 
 
     }
-    function userLogin($t1, $t2) {
-        $q="SELECT * FROM userdata where email='$t1' and pass='$t2'";
-        $recordSet=$this->connection->query($q);
-        $result=$recordSet->rowCount();
-        if ($result > 0) {
-
-            foreach($recordSet->fetchAll() as $row) {
-                $logid=$row['id'];
-                header("location: student_interface/dashboard.php?userlogid=$logid");
-            }
-        }
-
-        else {
-            header("location: index.php?msg=Invalid Credentials");
-        }
-
-    }
-
-    function adminLogin($t1, $t2) {
-
-        $q="SELECT * FROM admin where email='$t1' and pass='$t2'";
-        $recordSet=$this->connection->query($q);
-        $result=$recordSet->rowCount();
-
-        if ($result > 0) {
-
-            foreach($recordSet->fetchAll() as $row) {
-                $logid=$row['id'];
-                header("location: ./admin_interface/dashboard.php?logid=$logid");
-            }
-        }
-
-        else {
-            header("location: index.php?msg=Invalid Credentials");
-        }
-
-    }
-
 
 
     function addbook($bookpic, $bookname, $bookdetail, $bookauthor, $bookpub, $branch, $bookprice, $bookquantity) {

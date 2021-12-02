@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include './php-script/connect.php';
 
@@ -7,7 +7,7 @@ session_start();
 error_reporting(0);
 
 if (isset($_SESSION['email'])) {
-    header("Location: ./admin_interface/dashboard.php");
+	header("Location: ./admin_interface/dashboard.php");
 }
 
 if (isset($_POST['submit'])) {
@@ -19,7 +19,17 @@ if (isset($_POST['submit'])) {
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION['email'] = $row['email'];
-		header("Location: ./admin_interface/dashboard.php");
+		$logtype=$row['type'];
+
+		if ($logtype == 'Admin')
+			header("Location: ./admin_interface/dashboard.php");
+		else if ($logtype == 'Librarian')
+			header("Location: ./librarian_interface/dashboard.php");
+		else if ($logtype == 'Faculty')
+			header("Location: ./faculty_interface/dashboard.php");
+		else if ($logtype == 'Student')
+			header("Location: ./student_interface/dashboard.php");
+
 	} else {
 		echo "<script>alert('Woops! Email or password is Wrong.')</script>";
 	}
@@ -29,6 +39,7 @@ if (isset($_POST['submit'])) {
 
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +50,7 @@ if (isset($_POST['submit'])) {
 
 	<title>Sign In</title>
 </head>
+
 <body>
 	<div class="container">
 		<form action="" method="POST" class="login-email">
@@ -56,4 +68,5 @@ if (isset($_POST['submit'])) {
 		</form>
 	</div>
 </body>
+
 </html>
