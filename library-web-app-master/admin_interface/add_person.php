@@ -5,7 +5,7 @@ include("../php-script/data_class.php");
 $addfirstname=$_POST['addfirstname'];
 $addlastname=$_POST['addlastname'];
 $addemail= $_POST['addemail'];
-$addpassword= md5($_POST['addpassword']);
+$addpassword= $_POST['addpassword'];
 $addrole= $_POST['addrole'];
 
 

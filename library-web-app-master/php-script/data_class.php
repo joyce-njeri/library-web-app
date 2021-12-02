@@ -1,4 +1,5 @@
-<?php include("../php-script/connect.php");
+<?php 
+include("../php-script/connect.php");
 
 class data extends db {
 
@@ -151,12 +152,17 @@ class data extends db {
         return $data;
     }
 
-    function userdetail($id){
+    function getuserdetail($id){
         $q="SELECT * FROM userdata where id ='$id'";
         $data=$this->connection->query($q);
         return $data;
     }
 
+    function userdetail($id){
+        $q="SELECT * FROM userdata where id ='$id'";
+        $data=$this->connection->query($q);
+        return $data;
+    }
 
 
     function requestbook($userid,$bookid){
@@ -238,6 +244,19 @@ class data extends db {
         // }
        
 
+    }
+
+
+    function updateuserdata($id, $firstname,$lastname,$email,$type){
+        $q="UPDATE userdata SET firstname = '$firstname', lastname = '$lastname', email = '$email', type = '$type' where id='$id'";
+        if($this->connection->exec($q)){
+    
+            
+           header("Location:dashboard.php?msg=done");
+        }
+        else{
+           header("Location:dashboard.php?msg=fail");
+        }
     }
 
     function delteuserdata($id){

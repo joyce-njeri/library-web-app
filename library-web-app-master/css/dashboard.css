@@ -225,6 +225,11 @@
         background-size: cover;
     }
 
+    .update {
+        background-image: linear-gradient(180deg, #5a5c69 10%, #373840 100%);
+        background-size: cover;
+    }
+
     .role {
         margin-top: -60px;
     }
