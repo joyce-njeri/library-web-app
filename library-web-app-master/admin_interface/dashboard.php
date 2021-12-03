@@ -55,24 +55,24 @@
                             <Button class="report-btn detail">ADD USER</Button>
                             <form class="form-group" action="add_person.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label style="color: #04244c;">First Name:</label><input type="text" name="addfirstname" style="width: 250px;" />
+                                    <label style="color: #04244c;">First Name:</label><input type="text" name="addfirstname" style="width: 250px;" required />
                                 </div>
                                 <div class="form-group">
-                                    <label style="color: #04244c;">Last Name:</label><input type="text" name="addlastname" style="width: 250px;" />
+                                    <label style="color: #04244c;">Last Name:</label><input type="text" name="addlastname" style="width: 250px;" required />
                                 </div>
                                 <div class="form-group">
-                                    <label style="color: #04244c;">Email:</label><input type="email" name="addemail" style="width: 250px;" />
+                                    <label style="color: #04244c;">Email:</label><input type="email" name="addemail" style="width: 250px;" required />
                                 </div>
 
                                 <div class="form-group">
-                                    <label style="color: #04244c;">Password:</label><input type="password" name="addpassword" style="width: 250px;" />
+                                    <label style="color: #04244c;">Password:</label><input type="password" name="addpassword" style="width: 250px;" required />
                                 </div>
                                 <div class="form-group">
-                                    <label style="color: #04244c;">Confirm Password:</label><input type="password" name="addcpassword" style="width: 250px;" />
+                                    <label style="color: #04244c;">Confirm Password:</label><input type="password" name="addcpassword" style="width: 250px;" required />
                                 </div>
                                 <div class="form-group">
                                     <label for="addrole" style="color: #04244c;">Choose Role:</label>
-                                    <select name="addrole">
+                                    <select name="addrole" required>
                                         <option value="Student">Student</option>
                                         <option value="Faculty">Faculty</option>
                                         <option value="Librarian">Librarian</option>
@@ -192,7 +192,7 @@
 
                             <form class="form-group" action="update_user.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                    <label style="color: #04244c;">User ID:</label><input type="text" value="<?php echo $useridupdate ?>" name="adduserid" style="width: 250px;"/>
+                                    <label style="color: #04244c;">User ID:</label><input type="text" value="<?php echo $useridupdate ?>" name="adduserid" style="width: 250px;" required />
                                 </div>
                                 <div class="form-group">
                                     <label style="color: #04244c;">First Name:</label><input type="text" value="<?php echo $firstname ?>" name="addfirstname" style="width: 250px;" required/>
@@ -206,7 +206,7 @@
 
                                 <div class="form-group">
                                     <label for="addrole" style="color: #04244c;">Choose Role:</label>
-                                    <select name="addrole">
+                                    <select name="addrole" required>
                                     <!-- <option value="" disabled selected hidden><?php echo $role ?></option> -->
                                         <option value="Student">Student</option>
                                         <option value="Faculty">Faculty</option>

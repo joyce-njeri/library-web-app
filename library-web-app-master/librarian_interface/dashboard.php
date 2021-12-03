@@ -142,23 +142,23 @@
                             <form action="add_book.php" method="post" enctype="multipart/form-data" style="padding-left: 50px;">
                                 <div class="form-group">
                                     <label style="color: #04244c;">Book Name:</label>
-                                    <input type="text" name="bookname" style="width: 80%;">
+                                    <input type="text" name="bookname" style="width: 80%;" required>
                                 </div>
                                 <div class="form-group">
                                     <label style="color: #04244c;">Detail:</label>
-                                    <input type="text" name="bookdetail" style="width: 80%;height:auto;">
+                                    <input type="text" name="bookdetail" style="width: 80%;height:auto;" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Author:</label>
-                                    <input type="text" name="bookauthor" style="width: 80%;">
+                                    <input type="text" name="bookauthor" style="width: 80%;" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Publication:</label>
-                                    <input type="date" name="bookpub">
+                                    <input type="date" name="bookpub" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1" style="color: #04244c;">Category:</label>
-                                    <select name="branch" style="text-align:center;">
+                                    <select name="branch" style="text-align:center;" required>
                                         <option name="branch">Fiction</option>
                                         <option name="branch">Drama</option>
                                         <option name="branch">Journal</option>
@@ -167,12 +167,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="formGroupExampleInput" style="color: #04244c;">Price:</label>
-                                    <input type="number" name="bookprice">
+                                    <label for="formGroupExampleInput" style="color: #04244c;">Price: </label>
+                                    <input type="number" name="bookprice" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Quantity:</label>
-                                    <input type="number" name="bookquantity">
+                                    <input type="number" name="bookquantity" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1" style="color: #04244c;">Book Photo:</label>
@@ -230,7 +230,7 @@
                                 <div class="addbook-input"  style="margin-top:20px;">
                                     <label for="book" style="color: #04244c;">Choose Book:</label>
 
-                                    <select name="book" style="width: 280px; text-align: center;">
+                                    <select name="book" style="width: 280px; text-align: center;" required>
                                         <?php
                                         $u = new data;
                                         $u->setconnection();
@@ -246,7 +246,7 @@
 
 
                                     <label for="Select Student" style="color: #04244c;">Select Email:</label>
-                                    <select name="userselect" style="width: 280px; text-align: center;">
+                                    <select name="userselect" style="width: 280px; text-align: center;" required>
                                         <?php
                                         $u = new data;
                                         $u->setconnection();
@@ -259,7 +259,7 @@
                                         ?>
                                     </select>
                                     <br><br>
-                                    <label for="Select Days" style="color: #04244c;">Select Days:</label><input type="number" name="days" />
+                                    <label for="Select Days" style="color: #04244c;">Select Days:</label><input type="number" name="days" required />
 
                                     <input class="submit-btn" type="submit" value="SUBMIT" />
                                 </div>
@@ -418,27 +418,27 @@
                             <form action="update_book.php" method="post" enctype="multipart/form-data" style="padding-left: 50px;">
                                 <div class="form-group">
                                     <label style="color: #04244c;">Book ID:</label>
-                                    <input type="text" name="bookid" value="<?php echo $bookid ?>">
+                                    <input type="text" name="bookid" value="<?php echo $bookid ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label style="color: #04244c;">Book Name:</label>
-                                    <input type="text" name="bookname" value="<?php echo $bookname ?>" style="width: 280px; text-align:center;">
+                                    <input type="text" name="bookname" value="<?php echo $bookname ?>" style="width: 280px; text-align:center;" required>
                                 </div>
                                 <div class="form-group">
                                     <label style="color: #04244c;">Detail:</label>
-                                    <textarea type="textarea" name="bookdetail" style="width: 500px;"><?php echo $bookdetail ?></textarea>
+                                    <textarea type="textarea" name="bookdetail" style="width: 500px;" required><?php echo $bookdetail ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Author:</label>
-                                    <input type="text" name="bookauthor" value="<?php echo $bookauthor ?>">
+                                    <input type="text" name="bookauthor" value="<?php echo $bookauthor?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Publication:</label>
-                                    <input type="text" name="bookpub" value="<?php echo $bookpub ?>">
+                                    <input type="text" name="bookpub" value="<?php echo $bookpub ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1" style="color: #04244c;">Category:</label>
-                                    <select name="branch" style="text-align:center;">
+                                    <select name="branch" style="text-align:center;" required>
                                         <option name="branch">Fiction</option>
                                         <option name="branch">Drama</option>
                                         <option name="branch">Journal</option>
@@ -448,11 +448,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Price:</label>
-                                    <input type="number" name="bookprice" value="<?php echo $bookprice ?>">
+                                    <input type="number" name="bookprice" value="<?php echo $bookprice ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Quantity:</label>
-                                    <input type="number" name="bookquantity" value="<?php echo $bookquantity ?>">
+                                    <input type="number" name="bookquantity" value="<?php echo $bookquantity ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1" style="color: #04244c;">Book Photo:</label>

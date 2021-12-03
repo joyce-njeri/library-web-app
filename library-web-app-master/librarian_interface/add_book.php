@@ -4,13 +4,13 @@ include("../php-script/data_class.php");
 
 
 
-$bookname=$_POST['bookname'];
-$bookdetail=$_POST['bookdetail'];
-$bookauthor=$_POST['bookauthor'];
-$bookpub=$_POST['bookpub'];
-$branch=$_POST['branch'];
-$bookprice=$_POST['bookprice'];
-$bookquantity=$_POST['bookquantity'];
+$bookname=mysqli_real_escape_string($conn,$_POST['bookname'])
+$bookdetail=mysqli_real_escape_string($conn,$_POST['bookdetail']);
+$bookauthor=mysqli_real_escape_string($conn,$_POST['bookauthor']);
+$bookpub=mysqli_real_escape_string($conn,$_POST['bookpub']);
+$branch=mysqli_real_escape_string($conn,$_POST['branch']);
+$bookprice=mysqli_real_escape_string($conn,$_POST['bookprice']);
+$bookquantity=mysqli_real_escape_string($conn,$_POST['bookquantity']);
 
 
 

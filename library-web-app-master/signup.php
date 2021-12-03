@@ -11,12 +11,12 @@ if (isset($_SESSION['email'])) {
 }
 
 if (isset($_POST['submit'])) {
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $cpassword = $_POST['cpassword'];
-    $type = $_POST['type'];
+    $firstname = mysqli_real_escape_string($conn,$_POST['firstname']);
+    $lastname = mysqli_real_escape_string($conn,$_POST['lastname']);
+    $email = mysqli_real_escape_string($conn,$_POST['email']);
+    $password = mysqli_real_escape_string($conn,$_POST['password']);
+    $cpassword = mysqli_real_escape_string($conn,$_POST['cpassword']);
+    $type = mysqli_real_escape_string($conn,$_POST['type']);
 
     if ($password == $cpassword) {
         $sql = "SELECT * FROM userdata WHERE email='$email'";

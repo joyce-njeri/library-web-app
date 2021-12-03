@@ -11,8 +11,13 @@ if (isset($_SESSION['email'])) {
 }
 
 if (isset($_POST['submit'])) {
-	$email = $_POST['email'];
-	$password = $_POST['password'];
+	/*$email = $_POST['email'];
+	$password = $_POST['password'];*/
+
+	//variables that will prevent sql injections
+
+	$email = mysqli_real_escape_string($conn,$_POST['email']);
+    $password = mysqli_real_escape_string($conn,$_POST['password']);
 
 	$sql = "SELECT * FROM userdata WHERE email='$email' AND password='$password'";
 	$result = mysqli_query($conn, $sql);
@@ -65,7 +70,7 @@ if (isset($_POST['submit'])) {
 		<form action="" method="POST" class="login-email">
 			<p class="login-text" style="font-size: 2rem; font-weight: 800;">Sign In</p>
 			<div class="input-group">
-				<input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+				<input type="email" placeholder="Email" name="email"value="<?php echo $email; ?>" required >
 			</div>
 			<div class="input-group">
 				<input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>

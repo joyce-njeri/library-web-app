@@ -2,8 +2,8 @@
 
 include("../php-script/data_class.php");
 
-$book=$_POST['book'];
-$userselect= $_POST['userselect'];
+$book=mysqli_real_escape_string($conn,$_POST['book']);
+$userselect= mysqli_real_escape_string($conn,$_POST['userselect']);
 $getdate= date("d/m/Y");
 $days= $_POST['days'];
 

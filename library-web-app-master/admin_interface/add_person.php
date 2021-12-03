@@ -2,11 +2,13 @@
 
 include("../php-script/data_class.php");
 
-$addfirstname=$_POST['addfirstname'];
-$addlastname=$_POST['addlastname'];
-$addemail= $_POST['addemail'];
-$addpassword= $_POST['addpassword'];
-$addrole= $_POST['addrole'];
+$addfirstname= mysqli_real_escape_string($conn,$_POST['addfirstname']);
+$addlastname=mysqli_real_escape_string($conn,$_POST['addlastname']);
+$addemail= mysqli_real_escape_string($conn,$_POST['addemail']);
+$addpassword= mysqli_real_escape_string($conn,$_POST['addpassword']);
+$addrole= mysqli_real_escape_string($conn,$_POST['addrole']);
+
+
 
 
 $obj=new data();
