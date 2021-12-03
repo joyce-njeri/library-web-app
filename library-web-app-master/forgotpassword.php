@@ -41,7 +41,7 @@ if (isset($_POST["email"]) && (!empty($_POST["email"]))) {
 		);
 		$expDate = date("Y-m-d H:i:s", $expFormat);
 		$token = md5($email);
-		$addKey = substr(md5(uniqid(rand(), 1)), 3, 10);
+		$addKey = substr(uniqid(rand(), 1), 3, 10);
 		$token = $token . $addKey;
 
 		// Insert Temp Table
@@ -51,7 +51,7 @@ if (isset($_POST["email"]) && (!empty($_POST["email"]))) {
 			VALUES ('" . $email . "', '" . $token . "', '" . $expDate . "');"
 		);
 
-		header("Location: resetpassword.php?key=$token&email=$email&action=reset");
+		header("Location: resetpassword.php?email=$email");
 	}
 } else {
 ?>
