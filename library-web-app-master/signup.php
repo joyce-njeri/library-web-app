@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <div class="container">
-        <form action="" method="POST" class="login-email">
+        <form action="" method="POST" class="login-email" onsubmit ="return validateForm()">
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
             <div class="input-group">
                 <input type="text" placeholder="First Name" name="firstname" value="<?php echo $firstname; ?>" required>
@@ -85,10 +85,16 @@ if (isset($_POST['submit'])) {
                 <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+                <input type="password" id="psw" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+                <br>
+                <span id="msg1" style = "color:red"></span>
+                <br>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+                <input type="password" id="cpsw" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+                <br>
+                <span id="msg2" style = "color:red"></span>
+                <br>
             </div>
             <div class="input-group">
                 <button name="submit" class="btn">Register</button>
@@ -97,5 +103,45 @@ if (isset($_POST['submit'])) {
         </form>
     </div>
 </body>
+
+<script >
+    function validatepassw(){
+        // colllect the password in js variables
+        var pw = document.getElementById("psw").value;
+        var cpw = document.getElementById("cpsw").value; 
+
+        //minimum password length validation  
+    if(pw.length < 8) {  
+      document.getElementById("msg1").innerHTML = "**Password length must be atleast 8 characters";  
+      return false;  
+    }  
+  
+    //maximum length of password validation  
+    if(pw.length > 15) {  
+      document.getElementById("msg1").innerHTML = "**Password length must not exceed 15 characters";  
+      return false;  
+    }
+      
+      //character check
+
+    let pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+        if (pattern.test(pw)) {
+            document.getElementById("msg1").innerHTML = "**Your password should have atleast one upper case letter, one lower case letter and one special character";
+        return false;
+    }
+
+
+    //password similarity check
+    if(pw != cpw) {  
+      document.getElementById("msg2").innerHTML = "**Passwords are not similar";  
+      return false; 
+
+    } else {  
+      alert ("Your password is valid");  
+        
+    }       
+}
+</script>
+    
 
 </html>
