@@ -6,7 +6,7 @@ error_reporting(0);
 
 session_start();
 
-if (isset($_SESSION['userid'])) {
+if (isset($_SESSION['email'])) {
     header("Location: ./admin_interface/dashboard.php");
 }
 
@@ -90,7 +90,7 @@ if (isset($_POST['submit'])) {
                 <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+                <input type="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" value="<?php echo $_POST['password']; ?>" required>
             </div>
             <div class="input-group">
                 <input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>

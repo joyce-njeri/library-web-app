@@ -37,6 +37,7 @@ class data extends db {
         $this->type=$type;
 
         $q="SELECT * FROM userdata WHERE email='$email'";
+
         $result=$this->connection->query($q);
         if (!$result->num_rows > 0) {
                 $q="INSERT INTO userdata(id, firstname, lastname, email, password,type)VALUES('','$firstname','$lastname','$email','$password','$type')";

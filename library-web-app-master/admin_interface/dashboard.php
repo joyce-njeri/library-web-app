@@ -65,7 +65,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label style="color: #04244c;">Password:</label><input type="password" name="addpassword" style="width: 250px;" />
+                                    <label style="color: #04244c;">Password:</label><input type="password" name="addpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="width: 250px;" />
                                 </div>
                                 <div class="form-group">
                                     <label style="color: #04244c;">Confirm Password:</label><input type="password" name="addcpassword" style="width: 250px;" />

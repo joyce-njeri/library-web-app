@@ -73,8 +73,7 @@ if (isset($_POST['submit'])) {
 			<div class="input-group">
 				<button name="submit" class="btn">Login</button>
 			</div>
-			<p class="login-register-text">Don't have an account? <a href="signup.php">Register Here</a>.</p>
-			<p class="login-register-text">Forgot Password? <a href="resetpassword.php">Reset Password</a>.</p>
+			<p class="login-register-text">Forgot Password? <a href="forgotpassword.php">Register Here</a>.</p>
 		</form>
 	</div>
 </body>

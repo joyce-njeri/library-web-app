@@ -4,7 +4,7 @@ include("../php-script/data_class.php");
 
 $book=$_POST['book'];
 $userselect= $_POST['userselect'];
-$lenddate= date("d/m/Y");
+$getdate= date("d/m/Y");
 $days= $_POST['days'];
 
 $returnDate=Date('d/m/Y', strtotime('+'.$days.'days'));
