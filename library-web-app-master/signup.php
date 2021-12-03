@@ -6,17 +6,29 @@ error_reporting(0);
 
 session_start();
 
-if (isset($_SESSION['email'])) {
+if (isset($_SESSION['userid'])) {
     header("Location: ./admin_interface/dashboard.php");
 }
 
 if (isset($_POST['submit'])) {
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $cpassword = $_POST['cpassword'];
-    $type = $_POST['type'];
+    $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $firstname = filter_var($firstname, FILTER_SANITIZE_STRING);
+    $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+    $lastname = filter_var($lastname, FILTER_SANITIZE_STRING);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+
+    // Remove all illegal characters from email
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+    // Validate e-mail
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+        echo ("$email is a valid email address");
+    } else {
+        echo "<script>alert('$email is not a valid email address.')</script>";
+    }
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $cpassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
+    $type = mysqli_real_escape_string($conn, $_POST['type']);
 
     if ($password == $cpassword) {
         $sql = "SELECT * FROM userdata WHERE email='$email'";
@@ -27,14 +39,7 @@ if (isset($_POST['submit'])) {
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 // echo "<script>alert('User Registration Completed.')</script>";
-                if ($type == 'Admin')
-                    header("Location: ./admin_interface/dashboard.php");
-                else if ($type == 'Librarian')
-                    header("Location: ./librarian_interface/dashboard.php");
-                else if ($type == 'Faculty')
-                    header("Location: ./faculty_interface/dashboard.php");
-                else 
-                    header("Location: ./student_interface/dashboard.php");
+                header("Location: signin.php");
             } else {
                 echo "<script>alert('Woops! Something Went Wrong.')</script>";
             }

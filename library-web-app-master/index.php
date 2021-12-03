@@ -49,7 +49,7 @@
 
             <h3>Opening Literary Doors</h3>
 
-            <p>Temporary supports education, personal development, and community enrichment. Our passionate and professional staff are here to help you navigate our collection of books, media, and library resources.
+            <p>The ALU Library supports education, personal development, and community enrichment. Our passionate and professional staff are here to help you navigate our collection of books, media, and library resources.
             </p>
 
             <div class="home-btns">

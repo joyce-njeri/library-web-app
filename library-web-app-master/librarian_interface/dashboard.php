@@ -168,11 +168,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Price:</label>
-                                    <input type="number" name="bookprice">
+                                    <input type="number" name="bookprice" min="0" max="100">
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Quantity:</label>
-                                    <input type="number" name="bookquantity">
+                                    <input type="number" name="bookquantity" min="1" max="20">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1" style="color: #04244c;">Book Photo:</label>
@@ -448,11 +448,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Price:</label>
-                                    <input type="number" name="bookprice" value="<?php echo $bookprice ?>">
+                                    <input type="number" name="bookprice" value="<?php echo $bookprice ?>" min="0" max="100">
                                 </div>
                                 <div class="form-group">
                                     <label for="formGroupExampleInput" style="color: #04244c;">Quantity:</label>
-                                    <input type="number" name="bookquantity" value="<?php echo $bookquantity ?>">
+                                    <input type="number" name="bookquantity" value="<?php echo $bookquantity ?>" min="1" max="20">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlFile1" style="color: #04244c;">Book Photo:</label>

@@ -51,7 +51,7 @@ $userloginid = $_SESSION["userid"] = $_GET['userlogid'];
 
             <div class="innerdiv" style="padding-top: 8%;">
 
-                <div class="role"><Button class="top-btn">FACULTY DASHBOARD</Button></div>
+                <div class="role"><Button class="top-btn">WELCOME TO FACULTY DASHBOARD</Button></div>
 
                 <div class="leftinnerdiv">
                     <Button class="btn" onclick="openpart('myaccount')">USER ACCOUNT</Button>

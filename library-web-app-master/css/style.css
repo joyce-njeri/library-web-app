@@ -119,13 +119,20 @@ body {
     padding: 15px 20px;
     text-align: center;
     border: none;
-    background: #b30000;
+    background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+    background-size: cover;
     outline: none;
     border-radius: 30px;
     font-size: 1.2rem;
     color: #FFF;
     cursor: pointer;
     transition: .3s;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    background-image: linear-gradient(180deg, #1cc88a 10%, #13855c 100%);
+    background-size: cover;
 }
 
 .container .login-email .input-group .btn:hover {
@@ -141,7 +148,7 @@ body {
 
 .login-register-text a {
     text-decoration: none;
-    color: #b30000;
+    color: linear-gradient(180deg, #4e73df 10%, #224abe 100%);;
 }
 
 @media (max-width: 430px) {
